@@ -4,7 +4,7 @@ import { normalize, validate, type AntiSpam, type Application } from "@/lib/insc
 import { notifyTelegram } from "@/lib/telegram";
 
 // POST /api/inscripcion — recibe la postulación, la valida y la agrega como
-// fila en la Google Sheet "build 101 · Postulaciones" a través de un web app de
+// fila en la Google Sheet "picanthon · Postulaciones" a través de un web app de
 // Apps Script (ver scripts/google-apps-script/). La URL y el secreto viven en
 // variables de entorno: nunca llegan al navegador.
 //

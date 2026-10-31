@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { WindowChrome } from "./WindowChrome";
 import { SPIN, reducedMotion, useInView } from "./useInView";
-import { APPLY_CLOSED_MESSAGE, APPLY_OPEN, SPONSORS_EMAIL, TEAMS_TOTAL } from "../event";
+import { APPLY_CLOSED_MESSAGE, APPLY_OPEN, SPONSORS_EMAIL } from "../event";
 
 type Line =
   | { k: "cmd"; text: string }
@@ -15,7 +15,7 @@ type Line =
   | { k: "quote" };
 
 const SCRIPT: Line[] = [
-  { k: "cmd", text: APPLY_OPEN ? "build101 --join" : "build101 --status" },
+  { k: "cmd", text: APPLY_OPEN ? "picanthon --join" : "picanthon --status" },
   { k: "blank" },
   ...(APPLY_OPEN
     ? ([
@@ -24,9 +24,9 @@ const SCRIPT: Line[] = [
         { k: "step", n: "03", text: "te confirmamos por email" },
       ] as const)
     : ([
-        { k: "step", n: "01", text: "primera edición ✔" },
-        { k: "step", n: "02", text: `${TEAMS_TOTAL} equipos, productos de IA funcionando` },
-        { k: "step", n: "03", text: "próxima edición: pronto" },
+        { k: "step", n: "01", text: "hackathon de ciberseguridad" },
+        { k: "step", n: "02", text: "hallazgos que se pueden mostrar" },
+        { k: "step", n: "03", text: "un sábado, de 9 a 21 hs" },
       ] as const)),
 ];
 
@@ -205,9 +205,9 @@ function runCommand(
   if (lower === "cat readme" || lower === "cat readme.md")
     return {
       out: [
-        <div className="md-h" key="h"># build 101</div>,
-        <div className="out" key="1">la hackathon de IA más grande de uruguay. un producto de IA real,</div>,
-        <div className="out" key="2">construido en un fin de semana y pitcheado en vivo.</div>,
+        <div className="md-h" key="h"># picanthon</div>,
+        <div className="out" key="1">la hackathon de ciberseguridad. un sábado, de 9 a 21 hs, para hallar</div>,
+        <div className="out" key="2">fallas, construir la defensa y mostrarla en vivo.</div>,
       ],
     };
   if (
@@ -238,7 +238,7 @@ function runCommand(
     return {
       out: O(
         <div className="out">
-          gold · silver · partners · instituciones · nos dan energía —
+          gold · silver · partners · instituciones —
           sumate → <span className="accent">{SPONSORS_EMAIL}</span>
         </div>,
       ),

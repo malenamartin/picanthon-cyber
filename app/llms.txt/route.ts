@@ -5,6 +5,8 @@ import {
   CANONICAL_URL,
   EVENT_DATES_LONG,
   EVENT_DESCRIPTION,
+  EVENT_NAME,
+  ORGANIZERS,
   JURY,
   MENTORS_DESCRIPTION,
   APPLY_URL,
@@ -26,20 +28,19 @@ import { PRESS, formatPressDate } from "../press";
 export const dynamic = "force-static";
 
 export function GET() {
-  const body = `# build 101
+  const body = `# ${EVENT_NAME}
 
 > ${EVENT_DESCRIPTION}
 
 ## datos clave
 
-- qué: la hackathon de IA más grande de uruguay, presencial: se construye un producto de IA durante el fin de semana y se pitchea en vivo frente a un jurado.
-- primera edición: ${EVENT_DATES_LONG}, con ${TEAMS_TOTAL} equipos. va a haber una próxima edición; las novedades salen primero en redes.
+- qué: ${EVENT_NAME}, hackathon de ciberseguridad presencial en Buenos Aires. El sábado se buscan fallas, se construye una defensa y se muestra en vivo.
+- edición: ${EVENT_DATES_LONG}, con ${TEAMS_TOTAL} equipos. las novedades salen primero en redes.
 - equipos y proyectos: ${CANONICAL_URL}equipos
-- alcance: abierta a equipos de todo uruguay; la sede es en montevideo.
-- dónde: ${VENUE}, ${VENUE_ADDRESS}, uruguay.
+- dónde: ${VENUE}, ${VENUE_ADDRESS}, Argentina.
 - precio: gratis, con cupos limitados y selección del equipo organizador.
 - equipos: ${TEAM_SIZE} personas${APPLY_OPEN ? "; podés inscribir a tu equipo o inscribirte solo y te ayudamos a formar uno." : "."}
-- horario: ${SCHEDULE.map((d) => `${d.day} de ${d.hours}`).join(" y ")}; no se duerme en la sede.
+- horario: ${SCHEDULE.map((d) => `${d.day} de ${d.hours}`).join(" y ")}; la sede cierra a las 21 hs.
 ${
     APPLY_OPEN
       ? `- cierre de inscripción: ${APPLY_DEADLINE_FULL} (hora de uruguay).
@@ -52,9 +53,7 @@ ${
 
 ## organizan
 
-- build 101 (${CANONICAL_URL})
-- Universidad de Montevideo · Facultad de Ingeniería (FIUM) (https://um.edu.uy)
-- MÜTÜÖ (https://canalmutuo.com)
+${ORGANIZERS.map((org) => `- ${org.name}${"url" in org && org.url ? ` (${org.url})` : ""}`).join("\n")}
 
 ## mentores
 

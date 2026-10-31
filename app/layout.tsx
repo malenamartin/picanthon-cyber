@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Inter } from "next/font/google";
 import { GeistPixelCircle } from "geist/font/pixel";
 import {
   CANONICAL_URL,
@@ -25,6 +25,12 @@ const mono = Geist_Mono({
   variable: "--font-mono",
   display: "swap",
 });
+const picante = Inter({
+  subsets: ["latin"],
+  weight: "900",
+  variable: "--font-picante",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -34,20 +40,18 @@ export const metadata: Metadata = {
   alternates: {
     canonical: CANONICAL_URL,
     languages: {
-      "es-UY": CANONICAL_URL,
+      "es-AR": CANONICAL_URL,
       "x-default": CANONICAL_URL,
     },
   },
   keywords: [
-    "build 101",
-    "hackathon uruguay",
-    "hackathon montevideo",
-    "hackathon 2026",
-    "hackathon de ia",
-    "hackathon inteligencia artificial uruguay",
-    "producto de ia en un fin de semana",
-    "builders uruguay",
-    "product building montevideo",
+    "picanthon",
+    "Picanthon Cyberseguridad 2026",
+    "hackathon ciberseguridad",
+    "hackathon buenos aires",
+    "ciberseguridad",
+    "safe u",
+    "seguridad ofensiva",
   ],
   authors: [{ name: SITE_NAME, url: CANONICAL_URL }],
   creator: SITE_NAME,
@@ -93,7 +97,7 @@ export default function RootLayout({
   return (
     // Un solo tema: el color sale de los tokens del CSS, así que no hay script
     // de pre-paint, ni data-theme, ni riesgo de flash de tema equivocado.
-    <html lang="es-UY" className={`${sans.variable} ${mono.variable} ${GeistPixelCircle.variable}`}>
+    <html lang="es-AR" className={`${sans.variable} ${mono.variable} ${picante.variable} ${GeistPixelCircle.variable}`}>
       <body>
         {children}
         <PointerSpot />

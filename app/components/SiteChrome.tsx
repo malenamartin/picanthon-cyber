@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Logo } from "./Logo";
 import { ShareLinks } from "./ShareLinks";
 import { FooterSocials, NavSocials } from "./Socials";
-import { TEAM } from "../event";
+import { PICANTE_EMAIL, TEAM } from "../event";
 
 const AREA_LABEL = { participants: "participants", mentors: "mentors", sponsors: "sponsors" } as const;
 
@@ -12,7 +12,7 @@ export function SiteNav({ page }: { page?: "equipos" } = {}) {
   return (
     <nav className="topnav" aria-label="principal">
       <div className="wrap topnav-inner">
-        <Link href="/" aria-label="build 101, inicio">
+        <Link href="/" aria-label="Picante, inicio">
           <Logo />
         </Link>
         <div className="nav-links">
@@ -44,7 +44,7 @@ export function FlowNav() {
   return (
     <nav className="topnav" aria-label="principal">
       <div className="wrap topnav-inner">
-        <Link href="/" aria-label="build 101, inicio">
+        <Link href="/" aria-label="Picante, inicio">
           <Logo />
         </Link>
         <Link href="/" className="link-quiet">
@@ -62,7 +62,7 @@ export function SiteFooter() {
         <div className="footer-top">
           <div>
             <Logo className="footer-logo" />
-            <p className="footer-tagline">build. ship. repeat.</p>
+            <p className="footer-tagline">build. ship. defend.</p>
             <FooterSocials />
           </div>
           <ul className="footer-contacts">
@@ -76,9 +76,14 @@ export function SiteFooter() {
           </ul>
         </div>
         <div className="footer-bottom">
-          <span>© 2026 build 101 · Montevideo, Uruguay</span>
+          <a className="footer-write" href={`mailto:${PICANTE_EMAIL}`}>
+            escribir a equipo picante <span>{PICANTE_EMAIL}</span>
+          </a>
           <ShareLinks />
         </div>
+      </div>
+      <div className="footer-mark" aria-hidden="true">
+        Picante
       </div>
     </footer>
   );

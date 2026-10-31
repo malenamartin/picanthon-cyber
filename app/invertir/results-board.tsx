@@ -18,7 +18,7 @@ export function ResultsBoard() {
     const url = URL.createObjectURL(blob);
     const anchor = document.createElement("a");
     anchor.href = url;
-    anchor.download = `build101-${INVESTMENT_GAME.roundId}-resultados.csv`;
+    anchor.download = `picanthon-${INVESTMENT_GAME.roundId}-resultados.csv`;
     anchor.click();
     URL.revokeObjectURL(url);
   }

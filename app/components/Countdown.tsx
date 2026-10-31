@@ -12,7 +12,7 @@ const pad = (n: number) => String(n).padStart(2, "0");
 /** Qué se cuenta: primero el cierre de inscripciones, después el kickoff. */
 function target(now: number): { label: string; at: number | null } {
   if (APPLY_OPEN && now < DEADLINE) return { label: "cierran las inscripciones", at: DEADLINE };
-  if (now < KICKOFF) return { label: "arranca build 101", at: KICKOFF };
+  if (now < KICKOFF) return { label: "arranca picanthon", at: KICKOFF };
   return { label: "próxima edición", at: null };
 }
 
@@ -47,7 +47,7 @@ export function Countdown() {
   // se usa dentro de un <dl>: el par dt/dd lo pone este componente.
   return (
     <>
-      <dt>{now === null ? (APPLY_OPEN ? "cierran las inscripciones" : "arranca build 101") : t.label}</dt>
+      <dt>{now === null ? (APPLY_OPEN ? "cierran las inscripciones" : "arranca picanthon") : t.label}</dt>
       <dd className="countdown">{value}</dd>
     </>
   );

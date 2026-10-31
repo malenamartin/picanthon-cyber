@@ -1,4 +1,4 @@
-// build 101 wrapped — qué se puede mostrar en la tele.
+// picanthon wrapped — qué se puede mostrar en la tele.
 // Va a una pantalla de un evento con sponsors: ante la duda, no se muestra.
 
 /** minúsculas, sin tildes y con el leetspeak más común deshecho (p0t0 → poto). */

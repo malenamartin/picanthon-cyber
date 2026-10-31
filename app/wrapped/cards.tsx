@@ -5,7 +5,7 @@ import { GlyphField } from "../components/GlyphField";
 import { reducedMotion } from "../components/useInView";
 import type { WrappedMetrics } from "@/lib/wrapped-types";
 
-// Las tarjetas de build 101 wrapped. Una idea por pantalla: el dato enorme, una
+// Las tarjetas de picanthon wrapped. Una idea por pantalla: el dato enorme, una
 // línea que lo explica y, como mucho, un renglón de detalle.
 
 type M = WrappedMetrics;
@@ -138,7 +138,7 @@ export function Intro({ m }: CardProps) {
   return (
     <>
       <In className="wr-cmd">
-        <span className="sig">$</span>build101 --wrapped<span className="wr-caret" />
+        <span className="sig">$</span>picanthon --wrapped<span className="wr-caret" />
       </In>
       <In i={1}>
         <GlyphField className="wr-glyph" lines={["wrapped"]} label="wrapped, escrito con ceros y unos" />
@@ -181,7 +181,7 @@ export function Receipt({ m, idx }: CardProps) {
       </div>
       <In i={2} className="wr-receipt">
         <div className="wr-receipt-head">
-          <span>build 101</span>
+          <span>picanthon</span>
           <span>17—18 oct</span>
         </div>
         <ul className="wr-receipt-lines">
@@ -613,7 +613,7 @@ export function Dashboard({ m }: CardProps) {
         ))}
       </div>
       <In i={2} className="wr-panel">
-        <p className="wr-k">$ build101 --status · commits por hora</p>
+        <p className="wr-k">$ picanthon --status · commits por hora</p>
         <Heatmap m={m} compact />
         <div className="wr-mini">
           {m.peak ? (
@@ -654,7 +654,7 @@ export function Outro({ m }: CardProps) {
         build. ship. repeat.
       </In>
       <In i={2} as="p" className="wr-caption">
-        gracias, builders. nos vemos en build 101 | batch 2.
+        gracias, builders. nos vemos en picanthon | batch 2.
       </In>
       <In i={3} as="p" className="wr-sub">
         {n(m.totals.commits)} commits · {n(m.totals.linesAdded)} líneas · {n(m.totals.teams)} equipos · build101.dev

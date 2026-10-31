@@ -5,7 +5,7 @@ import { PixelBlocks, PIXELS_SMALL } from "./components/PixelBlocks";
 import { APPLY_OPEN, APPLY_PATH } from "./event";
 
 export const metadata: Metadata = {
-  title: "página no encontrada · build 101",
+  title: "página no encontrada · picanthon",
   robots: { index: false },
 };
 

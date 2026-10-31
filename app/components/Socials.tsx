@@ -1,5 +1,4 @@
-import { Reveal } from "./Reveal";
-import { SOCIALS } from "../event";
+import { EVENT_DATES_LONG, SOCIALS, VENUE } from "../event";
 
 type SocialKey = (typeof SOCIALS)[number]["key"];
 
@@ -16,15 +15,11 @@ export function SocialIcon({ k, size = 20 }: { k: SocialKey; size?: number }) {
       </svg>
     );
   }
-  if (k === "x") {
+  if (k === "web") {
     return (
-      <svg {...common}>
-        <rect x="3" y="3" width="18" height="18" rx="4" fill="none" stroke="currentColor" strokeWidth="1.8" />
-        <path
-          fill="currentColor"
-          transform="translate(6 6) scale(0.5)"
-          d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-        />
+      <svg {...common} fill="none" stroke="currentColor" strokeWidth="1.8">
+        <rect x="3.5" y="3.5" width="17" height="17" />
+        <path d="M10 14.5 L16.5 8 M12.5 8 H16.5 V12" />
       </svg>
     );
   }
@@ -45,7 +40,7 @@ export function NavSocials() {
     <ul className="nav-socials" aria-label="redes">
       {SOCIALS.map((s) => (
         <li key={s.key}>
-          <a href={s.url} target="_blank" rel="noopener noreferrer" aria-label={`build 101 en ${s.label}`}>
+          <a href={s.url} target="_blank" rel="noopener noreferrer" aria-label={`Picante en ${s.label}`}>
             <SocialIcon k={s.key} />
           </a>
         </li>
@@ -60,7 +55,7 @@ export function FooterSocials() {
     <ul className="footer-socials" aria-label="redes">
       {SOCIALS.map((s) => (
         <li key={s.key}>
-          <a href={s.url} target="_blank" rel="noopener noreferrer" aria-label={`build 101 en ${s.label}`}>
+          <a href={s.url} target="_blank" rel="noopener noreferrer" aria-label={`Picante en ${s.label}`}>
             <SocialIcon k={s.key} size={18} />
             {s.label} ↗
           </a>
@@ -70,39 +65,28 @@ export function FooterSocials() {
   );
 }
 
-/** Cierre de la página: CTA a seguir las redes. */
+/** Cierre de la página: una tarjeta y dos caminos. Las redes quedan en el footer. */
 export function FollowSection() {
+  const picante = SOCIALS.find((s) => s.key === "web");
   return (
-    <section id="redes" className="section">
-      <div className="wrap follow">
-        <Reveal className="follow-copy">
-          <p className="eyebrow">// próxima edición</p>
-          <h2 className="h2">
-            seguinos para
-            <br />
-            enterarte primero.
-          </h2>
-        </Reveal>
-        <Reveal className="follow-links">
-          <ul>
-            {SOCIALS.map((s) => (
-              <li key={s.key}>
-                <a className="follow-link" href={s.url} target="_blank" rel="noopener noreferrer">
-                  <span className="follow-icon">
-                    <SocialIcon k={s.key} size={26} />
-                  </span>
-                  <span className="follow-text">
-                    <span className="follow-name">{s.label}</span>
-                    <span className="follow-handle">{s.handle}</span>
-                  </span>
-                  <span className="arr" aria-hidden>
-                    ↗
-                  </span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </Reveal>
+    <section id="redes" className="section closer">
+      <div className="wrap">
+        <div className="closer-card">
+          <h2 className="h2">hacé algo que se recuerde.</h2>
+          <p className="closer-lede">
+            {EVENT_DATES_LONG}, en {VENUE}.
+          </p>
+          <div className="closer-actions">
+            <a href="#evento" className="btn btn-primary">
+              ver el formato <span className="arr">→</span>
+            </a>
+            {picante ? (
+              <a href={picante.url} className="btn closer-secondary" target="_blank" rel="noopener noreferrer">
+                conocé picante <span className="arr">↗</span>
+              </a>
+            ) : null}
+          </div>
+        </div>
       </div>
     </section>
   );

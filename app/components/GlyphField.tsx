@@ -5,11 +5,9 @@ import { reducedMotion } from "./useInView";
 
 type Cell = { x: number; y: number; inside: boolean; ch: string; at: number; blue: number; set: boolean };
 
-// fondo: caracteres de código; adentro del texto: bits (build 101)
+// fondo: caracteres de código; adentro del texto: bits (picanthon)
 const CHARS = "{}<>/=+*#;:$_build".split("");
 const BITS = ["0", "1"];
-const CW = 9; // ancho de celda (px)
-const CH = 12; // alto de celda (px)
 const RADIUS = 64; // radio del puntero (px)
 
 const pick = (set: string[]) => set[(Math.random() * set.length) | 0];
@@ -23,13 +21,18 @@ export function GlyphField({
   lines,
   label,
   className = "",
+  dense = false,
 }: {
   lines: string[];
   label: string;
   className?: string;
+  /** Grilla más fina, para que una palabra larga siga leyéndose. */
+  dense?: boolean;
 }) {
   const ref = useRef<HTMLCanvasElement>(null);
   const text = lines.join("\n");
+  const CW = dense ? 6 : 9;
+  const CH = dense ? 8 : 12;
 
   useEffect(() => {
     const cv = ref.current;
@@ -43,7 +46,7 @@ export function GlyphField({
     const color = (name: string, fallback: string) => css.getPropertyValue(name).trim() || fallback;
     const FG = color("--fg", "#ffffff");
     const FAINT = color("--faint", "#878b96");
-    const BLUE = color("--accent-text", "#6aa9ff");
+    const BLUE = color("--accent-text", "#ff7a4d");
 
     let cells: Cell[] = [];
     let W = 0;
@@ -77,7 +80,7 @@ export function GlyphField({
       const size = Math.min((100 * W * 0.76) / widest, (H * 0.8) / (0.72 + (rows.length - 1) * 0.92));
       mc.font = `600 ${size}px ${family}`;
       mc.fillStyle = mc.strokeStyle = "#000";
-      mc.lineWidth = size * 0.09;
+      mc.lineWidth = size * (dense ? 0.18 : 0.09);
       mc.lineJoin = "round";
       mc.textBaseline = "alphabetic";
       const top = (H - (0.72 + (rows.length - 1) * 0.92) * size) / 2;
@@ -193,7 +196,7 @@ export function GlyphField({
       cv.removeEventListener("pointermove", onMove);
       cv.removeEventListener("pointerleave", onLeave);
     };
-  }, [text]);
+  }, [text, dense, CW, CH]);
 
   return <canvas ref={ref} className={`glyph-field ${className}`.trim()} role="img" aria-label={label} />;
 }

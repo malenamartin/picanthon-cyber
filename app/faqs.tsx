@@ -1,6 +1,15 @@
 import type { ReactNode } from "react";
-import Link from "next/link";
-import { CANONICAL_URL, MENTORS_EMAIL, PARTICIPANTS_EMAIL, SPONSORS_EMAIL, VENUE } from "./event";
+import {
+  APPLY_OPEN,
+  APPLY_PATH,
+  EVENT_DATES_LONG,
+  ORGANIZERS,
+  PICANTE_EMAIL,
+  TEAM_SIZE,
+  TEAMS_TOTAL,
+  VENUE,
+  VENUE_LOCALITY,
+} from "./event";
 
 /**
  * FAQs — fuente única de verdad.
@@ -16,53 +25,71 @@ export type FaqItem = {
   a?: ReactNode;
 };
 
+const organizerNames = ORGANIZERS.map((org) => org.name);
+const organizerList = `${organizerNames.slice(0, -1).join(", ")} y ${organizerNames.at(-1)}`;
+
 export const FAQS: FaqItem[] = [
   {
-    q: "qué es build 101?",
-    aText: `la hackathon de IA más grande de uruguay. la primera edición fue el 17 y 18 de octubre de 2026 en la ${VENUE}.`,
+    q: "qué es picanthon?",
+    aText: `Picanthon Cyberseguridad 2026 es la hackathon de ciberseguridad. un sábado presencial para hallar fallas, construir la defensa y mostrarla en vivo. organizan ${organizerList}.`,
   },
   {
-    q: "dónde veo lo que construyeron los equipos?",
-    aText: `en ${CANONICAL_URL}equipos.`,
+    q: "cuándo y dónde?",
+    aText: `el ${EVENT_DATES_LONG}, en ${VENUE}, ${VENUE_LOCALITY}. es un solo día: el domingo no se usa.`,
+  },
+  {
+    q: "qué se hace el sábado?",
+    aText: `son ${TEAMS_TOTAL} equipos de ${TEAM_SIZE}. cada uno elige una superficie, reproduce una falla, deja una defensa que se puede correr y la muestra en vivo ese mismo sábado. durante el día hay mentores para intercambiar ideas, resolver dudas y avanzar.`,
+  },
+  {
+    q: "quién organiza?",
+    aText: `organizan ${organizerList}.`,
     a: (
       <>
-        en{" "}
-        <Link href="/equipos" className="bracket">
-          /equipos
-        </Link>
+        organizan{" "}
+        {ORGANIZERS.map((org, i) => {
+          const last = i === ORGANIZERS.length - 1;
+          const sep = i === 0 ? "" : last ? " y " : ", ";
+          const name =
+            "url" in org && org.url ? (
+              <a href={org.url} className="bracket" target="_blank" rel="noopener noreferrer">
+                {org.name}
+              </a>
+            ) : (
+              org.name
+            );
+          return (
+            <span key={org.name}>
+              {sep}
+              {name}
+            </span>
+          );
+        })}
         .
       </>
     ),
   },
   {
-    q: "va a haber otra edición?",
-    aText: "sí. seguinos en redes para enterarte primero.",
-    a: (
+    q: "cómo me anoto?",
+    aText: APPLY_OPEN ? "la inscripción está abierta." : "las inscripciones están cerradas.",
+    a: APPLY_OPEN ? (
       <>
-        sí.{" "}
-        <a href="#redes" className="bracket">
-          seguinos en redes
-        </a>{" "}
-        para enterarte primero.
+        la inscripción está abierta.{" "}
+        <a href={APPLY_PATH} className="bracket">
+          inscribite
+        </a>
+        .
       </>
-    ),
+    ) : undefined,
   },
   {
     q: "a quién le escribo?",
-    aText: `participantes: ${PARTICIPANTS_EMAIL}. mentores: ${MENTORS_EMAIL}. sponsors: ${SPONSORS_EMAIL}.`,
+    aText: `a equipo picante: ${PICANTE_EMAIL}.`,
     a: (
       <>
-        participantes:{" "}
-        <a href={`mailto:${PARTICIPANTS_EMAIL}`} className="bracket">
-          {PARTICIPANTS_EMAIL}
-        </a>
-        . mentores:{" "}
-        <a href={`mailto:${MENTORS_EMAIL}`} className="bracket">
-          {MENTORS_EMAIL}
-        </a>
-        . sponsors:{" "}
-        <a href={`mailto:${SPONSORS_EMAIL}`} className="bracket">
-          {SPONSORS_EMAIL}
+        a equipo picante:{" "}
+        <a href={`mailto:${PICANTE_EMAIL}`} className="bracket">
+          {PICANTE_EMAIL}
         </a>
         .
       </>

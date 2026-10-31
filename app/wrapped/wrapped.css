@@ -1,5 +1,5 @@
 /* ============================================================
-   build 101 wrapped — las tarjetas de la hackathon, se pasan a mano.
+   picanthon wrapped — las tarjetas de la hackathon, se pasan a mano.
    Mismos tokens que la landing (globals.css): fondo --bg, --surface para
    paneles, un solo azul, Geist Mono para la voz terminal y los números,
    Geist Sans para leer. Todo se mide en --u (1% del ancho en 16:9) para que
@@ -22,7 +22,7 @@ html:has(.wr) body {
   --gutter: max(calc(var(--u) * 4), 56px);
   padding: calc(var(--u) * 2.4) var(--gutter) calc(var(--u) * 2);
   background:
-    radial-gradient(60% 50% at 100% 100%, rgb(59 130 246 / 0.07), transparent 70%),
+    radial-gradient(60% 50% at 100% 100%, rgb(255 51 0 / 0.07), transparent 70%),
     var(--bg);
   color: var(--fg-body);
   font-size: calc(var(--u) * 1.6);
@@ -140,7 +140,7 @@ html:has(.wr) body {
 }
 .wr-hero.glow {
   color: var(--accent-strong);
-  text-shadow: 0 0 calc(var(--u) * 2.4) rgb(59 130 246 / 0.55);
+  text-shadow: 0 0 calc(var(--u) * 2.4) rgb(255 51 0 / 0.55);
 }
 .wr-hero small {
   font-size: 0.38em;
@@ -204,7 +204,7 @@ html:has(.wr) body {
   border: 1px solid var(--line-2);
   border-radius: calc(var(--u) * 0.9);
   background:
-    radial-gradient(90% 60% at 100% 100%, rgb(59 130 246 / 0.16), transparent 60%),
+    radial-gradient(90% 60% at 100% 100%, rgb(255 51 0 / 0.16), transparent 60%),
     var(--surface);
   font-family: var(--font-mono-stack);
   font-size: calc(var(--u) * 1.75);
@@ -259,7 +259,7 @@ html:has(.wr) body {
   letter-spacing: -0.04em;
   text-transform: none;
   color: var(--accent-strong);
-  text-shadow: 0 0 calc(var(--u) * 2) rgb(59 130 246 / 0.55);
+  text-shadow: 0 0 calc(var(--u) * 2) rgb(255 51 0 / 0.55);
   font-variant-numeric: tabular-nums;
 }
 .wr-receipt-foot {
@@ -298,7 +298,7 @@ html:has(.wr) body {
 .wr-cell.peak {
   outline: 2px solid var(--accent-strong);
   outline-offset: 2px;
-  box-shadow: 0 0 calc(var(--u) * 2) rgb(59 130 246 / 0.6);
+  box-shadow: 0 0 calc(var(--u) * 2) rgb(255 51 0 / 0.6);
 }
 @keyframes wr-cell-in {
   from {
@@ -378,7 +378,7 @@ html:has(.wr) body {
 }
 .wr-bar:first-child .wr-bar-fill {
   background: var(--accent);
-  box-shadow: 0 0 calc(var(--u) * 1.6) rgb(59 130 246 / 0.5);
+  box-shadow: 0 0 calc(var(--u) * 1.6) rgb(255 51 0 / 0.5);
 }
 .wr-bar:first-child .wr-bar-n {
   color: var(--accent-text);
@@ -397,7 +397,7 @@ html:has(.wr) body {
 .wr-tag {
   margin-left: 0.6em;
   padding: 0.1em 0.5em;
-  border: 1px solid rgb(59 130 246 / 0.45);
+  border: 1px solid rgb(255 51 0 / 0.45);
   border-radius: calc(var(--u) * 0.3);
   font-family: var(--font-mono-stack);
   font-size: 0.55em;
@@ -427,7 +427,7 @@ html:has(.wr) body {
 }
 .wr-waffle i.on {
   background: var(--accent);
-  box-shadow: 0 0 calc(var(--u) * 0.8) rgb(59 130 246 / 0.35);
+  box-shadow: 0 0 calc(var(--u) * 0.8) rgb(255 51 0 / 0.35);
 }
 
 /* ---------- contadores ---------- */
@@ -458,14 +458,14 @@ html:has(.wr) body {
   color: var(--accent-text);
 }
 .wr-tile.hot {
-  border-color: rgb(59 130 246 / 0.55);
+  border-color: rgb(255 51 0 / 0.55);
   background:
-    radial-gradient(90% 80% at 100% 100%, rgb(59 130 246 / 0.18), transparent 60%),
+    radial-gradient(90% 80% at 100% 100%, rgb(255 51 0 / 0.18), transparent 60%),
     var(--surface);
 }
 .wr-tile.hot .wr-tile-v {
   color: var(--accent-strong);
-  text-shadow: 0 0 calc(var(--u) * 2) rgb(59 130 246 / 0.5);
+  text-shadow: 0 0 calc(var(--u) * 2) rgb(255 51 0 / 0.5);
 }
 
 /* ---------- nube de palabras ---------- */
@@ -489,7 +489,7 @@ html:has(.wr) body {
 }
 .wr-cloud span:first-child {
   color: var(--accent-strong);
-  text-shadow: 0 0 calc(var(--u) * 2) rgb(59 130 246 / 0.5);
+  text-shadow: 0 0 calc(var(--u) * 2) rgb(255 51 0 / 0.5);
 }
 .wr-cloud sup {
   margin-left: 0.2em;
@@ -555,7 +555,7 @@ html:has(.wr) body {
   line-height: 1;
   letter-spacing: -0.05em;
   color: var(--accent-strong);
-  text-shadow: 0 0 calc(var(--u) * 2.4) rgb(59 130 246 / 0.55);
+  text-shadow: 0 0 calc(var(--u) * 2.4) rgb(255 51 0 / 0.55);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -592,7 +592,7 @@ html:has(.wr) body {
   height: var(--h);
   border-radius: calc(var(--u) * 0.4) calc(var(--u) * 0.4) 0 0;
   background: var(--accent);
-  box-shadow: 0 0 calc(var(--u) * 1.6) rgb(59 130 246 / 0.4);
+  box-shadow: 0 0 calc(var(--u) * 1.6) rgb(255 51 0 / 0.4);
   transform-origin: bottom;
   transform: scaleY(0);
   animation: wr-grow-y 1s var(--ease-rise) forwards;

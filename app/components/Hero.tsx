@@ -1,14 +1,15 @@
-import Link from "next/link";
 import { Terminal } from "./Terminal";
+import { IkTrace } from "./IkTrace";
 import { Countdown } from "./Countdown";
 import { PixelBlocks, PIXELS_HERO } from "./PixelBlocks";
 import {
-  APPLY_DEADLINE_FULL,
   APPLY_OPEN,
   EVENT_DATES,
+  EVENT_HOURS,
   EVENT_START_DATE,
-  TEAMS_TOTAL,
-  VENUE_SHORT,
+  ORGANIZERS,
+  VENUE,
+  VENUE_LOCALITY,
 } from "../event";
 
 export function Hero() {
@@ -16,61 +17,61 @@ export function Hero() {
     <header className="hero" id="top">
       <div className="wrap">
         <p className="hero-badge rise">
-          <span className="badge">{APPLY_OPEN ? "abiertas" : "primera edición"}</span>
-          {APPLY_OPEN
-            ? `inscripciones hasta el ${APPLY_DEADLINE_FULL.replace(/ /g, "\u00a0")}`
-            : `17 y 18 oct 2026 · ${TEAMS_TOTAL} equipos`}
+          <span className="badge">picanthon</span>
+          ciberseguridad · buenos aires
         </p>
 
-        {/* coorganizan arriba de todo, logos centrados: se ve apenas carga, en cualquier pantalla */}
         <div className="coorg rise">
-          <p className="sr-only">coorganizan</p>
+          <p className="sr-only">organizan</p>
           <ul className="coorg-logos">
-            <li>
-              <a
-                href="https://um.edu.uy"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Universidad de Montevideo · Facultad de Ingeniería"
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img className="coorg-um" src="/sponsors/um-fium-white.png" alt="Universidad de Montevideo · Facultad de Ingeniería (FIUM)" width={416} height={96} />
-              </a>
-            </li>
-            <li aria-hidden className="coorg-sep" />
-            <li>
-              <span className="coorg-b101" aria-label="build 101">
-                build 101
-              </span>
-            </li>
-            <li aria-hidden className="coorg-sep" />
-            <li>
-              <a href="https://canalmutuo.com" target="_blank" rel="noopener noreferrer" aria-label="MÜTÜÖ">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img className="coorg-mutuo" src="/sponsors/mutuo.png" alt="MÜTÜÖ" width={152} height={42} />
-              </a>
-            </li>
+            {ORGANIZERS.flatMap((org, i) => {
+              const name = (
+                <li key={org.name}>
+                  {"url" in org && org.url ? (
+                    <a href={org.url} target="_blank" rel="noopener noreferrer" className="coorg-name">
+                      {org.name === "Picante" ? (
+                        <>
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img className="logo-chili" src="/picante-chili.png" alt="" width={338} height={336} />
+                          {org.name}
+                        </>
+                      ) : org.name === "Fardo" ? (
+                        /* eslint-disable-next-line @next/next/no-img-element */
+                        <img className="logo-fardo" src="/fardo-logo.png" alt="Fardo" width={616} height={206} />
+                      ) : (
+                        org.name
+                      )}
+                    </a>
+                  ) : (
+                    <span className="coorg-name">{org.name}</span>
+                  )}
+                </li>
+              );
+              return i === 0
+                ? [name]
+                : [<li key={`${org.name}-sep`} aria-hidden className="coorg-sep" />, name];
+            })}
           </ul>
         </div>
 
         <div className="hero-frame rise d1">
+          <IkTrace />
           <div className="hero-copy">
             <h1 className="hero-title">
-              construimos <br />
-              lo que viene.
+              encontramos <br />
+              lo que falla.
               <br />
-              en un fin <br className="br-m" />
-              de semana.
+              el sábado.
             </h1>
             <p className="hero-lede">
-              La hackathon de IA más grande de Uruguay.
+              Picanthon Cyberseguridad 2026 es la hackathon de ciberseguridad.
               <br />
-              {TEAMS_TOTAL} equipos construyeron un producto de IA y lo pitchearon en vivo.
+              Un sábado, de 9 a 21 hs, para hallar fallas, construir la defensa y mostrarla en vivo.
             </p>
             <div className="hero-cta">
-              <Link href="/equipos" className="btn btn-primary">
-                ver los equipos →
-              </Link>
+              <a href="#evento" className="btn btn-primary">
+                ver el formato →
+              </a>
               <a href="#redes" className="link-quiet">
                 seguinos para lo que viene ↗
               </a>
@@ -94,17 +95,19 @@ export function Hero() {
 
         <dl className="hero-meta rise d2">
           <div>
-            <dt>primera edición</dt>
+            <dt>picanthon</dt>
             <dd>
               <time dateTime={EVENT_START_DATE}>{EVENT_DATES}</time>
+              <br />
+              {EVENT_HOURS}
             </dd>
           </div>
           <div>
             <dt>sede</dt>
             <dd>
-              Universidad de Montevideo
+              {VENUE}
               <br />
-              {VENUE_SHORT} · presencial
+              {VENUE_LOCALITY} · presencial
             </dd>
           </div>
           <div>

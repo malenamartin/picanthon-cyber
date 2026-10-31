@@ -1,4 +1,4 @@
-// build 101 wrapped — script de ingesta. Corre en la máquina de un organizador:
+// picanthon wrapped — script de ingesta. Corre en la máquina de un organizador:
 //
 //   npm run metrics                  # clona/actualiza, calcula y escribe wrapped/metrics.json
 //   npm run metrics -- --offline     # no hace fetch: usa los clones que ya hay
@@ -577,7 +577,7 @@ async function main() {
   const env = gitEnv(token);
   if (!token) console.warn("! sin GITHUB_TOKEN ni `gh auth token`: solo repos públicos y sin lenguajes/PRs");
 
-  console.log(`build 101 wrapped · ${repos.length} repos · ventana ${new Date(KICKOFF).toISOString()} → ${new Date(FREEZE).toISOString()}`);
+  console.log(`picanthon wrapped · ${repos.length} repos · ventana ${new Date(KICKOFF).toISOString()} → ${new Date(FREEZE).toISOString()}`);
 
   type RepoResult = {
     entry: RepoEntry;

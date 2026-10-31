@@ -30,25 +30,25 @@ const COPY: Record<
   }
 > = {
   solo: {
-    cmd: "$ build101 --join --solo",
+    cmd: "$ picanthon --join --solo",
     title: "busco equipo.",
     intro: "Contanos quién sos y qué hacés. Si quedás seleccionado, te ayudamos a armar un equipo de 3.",
     motivation: {
-      label: "¿por qué querés estar en build 101?",
+      label: "¿por qué querés estar en picanthon?",
       placeholder: "Un párrafo corto: qué te trae y qué te gustaría construir.",
     },
-    consent: `Puedo estar el ${EVENT_DATES_LONG}, presencial, y estoy de acuerdo en compartir estos datos con build 101.`,
+    consent: `Puedo estar el ${EVENT_DATES_LONG}, presencial, y estoy de acuerdo en compartir estos datos con picanthon.`,
     other: { q: "¿Ya tenés equipo?", label: "inscribir a mi equipo →", href: `${APPLY_PATH}/equipo` },
   },
   team: {
-    cmd: "$ build101 --join --team",
+    cmd: "$ picanthon --join --team",
     title: "ya tenemos equipo.",
     intro: "Vos quedás como contacto del equipo. Completá los datos de los 3 integrantes: los evaluamos como equipo.",
     motivation: {
-      label: "¿por qué quieren estar los 3 en build 101?",
+      label: "¿por qué quieren estar los 3 en picanthon?",
       placeholder: "Un párrafo corto: qué los trae y qué aporta cada uno.",
     },
-    consent: `Los 3 podemos estar el ${EVENT_DATES_LONG}, presencial, y estamos de acuerdo en compartir estos datos con build 101.`,
+    consent: `Los 3 podemos estar el ${EVENT_DATES_LONG}, presencial, y estamos de acuerdo en compartir estos datos con picanthon.`,
     other: { q: "¿Todavía te falta alguien?", label: "inscribirme solo →", href: `${APPLY_PATH}/solo` },
   },
 };
@@ -329,7 +329,7 @@ function Shell({
     <div className="wrap flow">
       <div className="flow-context">
         <p className="mono-line">
-          {step === "sent" ? "$ build101 --join ✓" : COPY[mode].cmd}
+          {step === "sent" ? "$ picanthon --join ✓" : COPY[mode].cmd}
         </p>
         {step !== "closed" && (
           <ol className="flow-steps" aria-label="pasos">
@@ -503,7 +503,7 @@ export function SignupFlow({ mode }: { mode: Mode }) {
         mode={mode}
         step={step}
         title="las inscripciones cerraron."
-        intro={`Cerraron el ${APPLY_DEADLINE} a las ${APPLY_DEADLINE_TIME}. Gracias por el interés en build 101.`}
+        intro={`Cerraron el ${APPLY_DEADLINE} a las ${APPLY_DEADLINE_TIME}. Gracias por el interés en picanthon.`}
         aside={<TalkToRamiro q="¿Tenés alguna duda?" />}
       >
         <div className="state state-error" role="status">
@@ -633,7 +633,7 @@ export function SignupFlow({ mode }: { mode: Mode }) {
             <button type="button" className="btn btn-primary btn-block" onClick={submit} disabled={sending}>
               {sending ? "enviando…" : "enviar inscripción →"}
             </button>
-            <p className="fine">Usamos estos datos solo para gestionar tu postulación a esta edición de build 101.</p>
+            <p className="fine">Usamos estos datos solo para gestionar tu postulación a esta edición de picanthon.</p>
           </div>
         </div>
       </Shell>
@@ -745,7 +745,7 @@ export function SignupFlow({ mode }: { mode: Mode }) {
           <button type="submit" className="btn btn-primary btn-block">
             revisar →
           </button>
-          <p className="fine">Usamos estos datos solo para gestionar tu postulación a esta edición de build 101.</p>
+          <p className="fine">Usamos estos datos solo para gestionar tu postulación a esta edición de picanthon.</p>
         </div>
       </form>
     </Shell>

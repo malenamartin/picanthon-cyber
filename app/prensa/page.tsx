@@ -10,9 +10,9 @@ const PRESS_CONTACT = TEAM.find((p) => p.email === PRESS_EMAIL)!;
 // A diferencia de /equipos, esta sí se indexa y va al sitemap: no tiene datos
 // personales y suma cobertura para buscadores.
 export const metadata: Metadata = {
-  title: "prensa · build 101",
+  title: "prensa · picanthon",
   description:
-    "Lo que publicaron los medios sobre build 101: notas, crónicas y contacto para prensa.",
+    "Lo que publicaron los medios sobre picanthon: notas, crónicas y contacto para prensa.",
   alternates: { canonical: "/prensa" },
 };
 

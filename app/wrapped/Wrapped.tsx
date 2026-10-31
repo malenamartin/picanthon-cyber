@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState, type FC, type TouchEvent } from "react";
 import type { WrappedMetrics } from "@/lib/wrapped-types";
+import { Logo } from "../components/Logo";
 import * as C from "./cards";
 
 // Las tarjetas se pasan a mano: ← → del teclado, las flechas de los costados,
@@ -122,7 +123,7 @@ export function Wrapped({ m }: { m: M }) {
   return (
     <div className="wr" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
       <header className="wr-top">
-        <span className="logo">build 101</span>
+        <Logo />
         <span className="wr-path">~/build-101 · wrapped</span>
         <span className="wr-live">
           <span className="wr-count">

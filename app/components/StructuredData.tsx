@@ -8,6 +8,8 @@ import {
   EVENT_DESCRIPTION,
   EVENT_END_ISO,
   EVENT_KICKOFF_ISO,
+  EVENT_NAME,
+  ORGANIZERS,
   LOGO_URL,
   OG_IMAGE_URL,
   SEO_DESCRIPTION,
@@ -17,7 +19,9 @@ import {
   TEAM_SIZE,
   VENUE,
   VENUE_ADDRESS,
+  VENUE_COUNTRY,
   VENUE_GEO,
+  VENUE_LOCALITY,
   VENUE_POSTAL_CODE,
   VENUE_REGION,
 } from "../event";
@@ -69,9 +73,9 @@ const structuredData = {
       ...(SOCIAL_PROFILES.length > 0 ? { sameAs: SOCIAL_PROFILES } : {}),
       areaServed: {
         "@type": "Country",
-        name: "Uruguay",
+        name: "Argentina",
       },
-      // la prensa es sobre build 101 (no solo la hackathon): cuelga de la organización
+      // la prensa es sobre picanthon (no solo la hackathon): cuelga de la organización
       subjectOf: PRESS.map((p) => ({
         "@type": "NewsArticle",
         headline: p.title,
@@ -95,24 +99,24 @@ const structuredData = {
       name: SITE_NAME,
       url: CANONICAL_URL,
       description: SEO_DESCRIPTION,
-      inLanguage: "es-UY",
+      inLanguage: "es-AR",
       publisher: { "@id": organizationId },
     },
     {
       "@type": "WebPage",
       "@id": webpageId,
       url: CANONICAL_URL,
-      name: "build 101: la hackathon de IA más grande de uruguay, en montevideo",
+      name: `${EVENT_NAME}, en Buenos Aires`,
       isPartOf: { "@id": websiteId },
       about: { "@id": eventId },
       primaryImageOfPage: OG_IMAGE_URL,
-      inLanguage: "es-UY",
+      inLanguage: "es-AR",
       dateModified: CONTENT_UPDATED_ISO,
     },
     {
       "@type": "Event",
       "@id": eventId,
-      name: "build 101",
+      name: EVENT_NAME,
       alternateName: SITE_NAME,
       description: EVENT_DESCRIPTION,
       url: CANONICAL_URL,
@@ -121,19 +125,19 @@ const structuredData = {
       endDate: EVENT_END_ISO,
       eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
       eventStatus: "https://schema.org/EventScheduled",
-      inLanguage: "es-UY",
+      inLanguage: "es-AR",
       keywords:
-        "hackathon uruguay, hackathon montevideo, hackathon de ia, build 101, inteligencia artificial, builders uruguay",
+        "picanthon, hackathon ciberseguridad, hackathon buenos aires, ciberseguridad, safe u",
       location: {
         "@type": "Place",
         name: VENUE,
         address: {
           "@type": "PostalAddress",
           streetAddress: VENUE_ADDRESS,
-          addressLocality: "Montevideo",
+          addressLocality: VENUE_LOCALITY,
           addressRegion: VENUE_REGION,
-          postalCode: VENUE_POSTAL_CODE,
-          addressCountry: "UY",
+          ...(VENUE_POSTAL_CODE ? { postalCode: VENUE_POSTAL_CODE } : {}),
+          addressCountry: VENUE_COUNTRY,
         },
         geo: {
           "@type": "GeoCoordinates",
@@ -143,16 +147,11 @@ const structuredData = {
       },
       organizer: [
         { "@id": organizationId },
-        {
-          "@type": "EducationalOrganization",
-          name: "Universidad de Montevideo · Facultad de Ingeniería (FIUM)",
-          url: "https://um.edu.uy",
-        },
-        {
+        ...ORGANIZERS.map((org) => ({
           "@type": "Organization",
-          name: "MÜTÜÖ",
-          url: "https://canalmutuo.com",
-        },
+          name: org.name,
+          ...("url" in org && org.url ? { url: org.url } : {}),
+        })),
       ],
       // todos los sponsors, con su categoría tal como se muestra en la página
       sponsor: TIERS.flatMap((t) =>
@@ -167,14 +166,14 @@ const structuredData = {
       offers: offer,
       audience: {
         "@type": "Audience",
-        audienceType: `builders de uruguay en equipos de ${TEAM_SIZE} personas`,
+        audienceType: `equipos de ${TEAM_SIZE} personas`,
       },
       isAccessibleForFree: true,
     },
     {
       "@type": "FAQPage",
       "@id": faqId,
-      inLanguage: "es-UY",
+      inLanguage: "es-AR",
       mainEntity: FAQS.map((item) => ({
         "@type": "Question",
         name: item.q,

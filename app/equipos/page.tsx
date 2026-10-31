@@ -23,7 +23,7 @@ export default function EquiposPage() {
           un fin de semana.
         </h1>
         <p className="lede">
-          Esto es lo que construyeron en build 101 y quiénes lo construyeron. Cada equipo tiene su link: copialo y compartilo.
+          Esto es lo que construyeron en picanthon y quiénes lo construyeron. Cada equipo tiene su link: copialo y compartilo.
         </p>
       </header>
 

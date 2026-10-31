@@ -1,5 +1,5 @@
 /* ============================================================
-   <build 101> — capa de terminal, easter eggs y motion
+   <picanthon> — capa de terminal, easter eggs y motion
    (heredado de la versión anterior; usa los tokens de globals.css)
    ============================================================ */
 
@@ -139,7 +139,7 @@
 
 /* la sede: cinta horizontal (marquee) de fotos reales de FIUM — varias fotos
    visibles a la vez, desplazándose solas en loop. En reposo van en duotono azul (grises + multiply del accent) para que la
-   marca build 101 mande; cada foto pasa a color al hover/focus. El duotono
+   marca picanthon mande; cada foto pasa a color al hover/focus. El duotono
    va al 55% para que se lea la estructura del edificio, y una máscara funde
    la cinta con el fondo en los dos extremos. */
 .sedem {

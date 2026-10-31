@@ -65,7 +65,7 @@ export function FakeCrash() {
           </div>
 
           <div className="crash-label">source</div>
-          <div className="crash-src">app/page.tsx (42:11) @ build 101</div>
+          <div className="crash-src">app/page.tsx (42:11) @ picanthon</div>
           <pre className="crash-code">
             <span className="cl-dim">  40 | </span>const energy = useHype()
             {"\n"}
@@ -87,7 +87,7 @@ export function FakeCrash() {
 
           <div className="crash-label">call stack</div>
           <div className="crash-frame">
-            build 101 <span>app/page.tsx (42:11)</span>
+            picanthon <span>app/page.tsx (42:11)</span>
           </div>
           <div className="crash-frame">
             renderHackathon <span>app/components/Hero.tsx (88:3)</span>

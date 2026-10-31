@@ -27,7 +27,7 @@ export function Perks() {
         </Reveal>
         <Reveal className="receipt">
           <div className="receipt-head">
-            <span>build 101</span>
+            <span>picanthon</span>
             <span>17—18 oct</span>
           </div>
           <ul className="receipt-lines">

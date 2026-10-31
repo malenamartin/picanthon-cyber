@@ -1,6 +1,6 @@
 import { Reveal } from "./Reveal";
 import { SedeCarousel } from "./SedeCarousel";
-import { SCHEDULE, VENUE, VENUE_ADDRESS, VENUE_MAPS, EVENT_START_DATE } from "../event";
+import { SCHEDULE, VENUE, VENUE_ADDRESS, VENUE_MAPS, EVENT_DATES_LONG, EVENT_START_DATE } from "../event";
 
 export function Schedule() {
   return (
@@ -9,9 +9,9 @@ export function Schedule() {
         <Reveal>
           <p className="eyebrow">// fechas &amp; lugar</p>
           <div className="schedule-head">
-            <h2 className="h2">guardate el finde.</h2>
+            <h2 className="h2">guardate el sábado.</h2>
             <time className="schedule-date" dateTime={EVENT_START_DATE}>
-              17 y 18 de octubre de 2026
+              {EVENT_DATES_LONG}
             </time>
           </div>
         </Reveal>

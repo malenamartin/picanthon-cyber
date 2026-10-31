@@ -1,5 +1,5 @@
 // ============================================================
-// <build 101> — prensa (fuente única de verdad)
+// <picanthon> — prensa (fuente única de verdad)
 // Alimenta /prensa, la franja de la landing, el schema (subjectOf) y
 // /llms.txt. Para sumar una nota: agregá un objeto acá y su imagen 16:9
 // (1200×675, webp) en public/prensa/. Los titulares van textuales: son citas.
@@ -19,7 +19,7 @@ export type PressItem = {
   /** fecha de publicación (YYYY-MM-DD) */
   date: string;
   image: string;
-  /** el medio también coorganizó build 101 (se marca para ser transparentes) */
+  /** el medio también coorganizó picanthon (se marca para ser transparentes) */
   coorg?: boolean;
 };
 
@@ -39,7 +39,7 @@ export const PRESS: readonly PressItem[] = [
     key: "mutuo",
     outlet: "Mutuo",
     kind: "crónica",
-    title: "Así fue la Build101. Primera hackatón de IA de Uruguay",
+    title: "Así fue la picanthon. Primera hackatón de IA de Uruguay",
     dek: "Qué pasó en la hackathon de IA más grande de Uruguay: el podio, los números del código, los 33 productos y por qué la coorganizaron desde Mutuo.",
     author: "Guido Iafigliola",
     url: "https://canalmutuo.com/blog/especiales/build101/",

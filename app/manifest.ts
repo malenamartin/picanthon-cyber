@@ -3,12 +3,12 @@ import { SEO_DESCRIPTION, SITE_NAME } from "./event";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "build 101: la hackathon de IA más grande de uruguay",
+    name: "Picanthon Cyberseguridad 2026",
     short_name: SITE_NAME,
     description: SEO_DESCRIPTION,
     start_url: "/",
     display: "browser",
-    lang: "es-UY",
+    lang: "es-AR",
     background_color: "#0a0a0a",
     theme_color: "#0a0a0a",
     icons: [

@@ -1,6 +1,6 @@
 import { Reveal } from "./Reveal";
 import { PixelBlocks, PIXELS_SMALL } from "./PixelBlocks";
-import { TEAM } from "../event";
+import { FOUNDERS } from "../event";
 
 export function LinkedInIcon() {
   return (
@@ -13,10 +13,8 @@ export function LinkedInIcon() {
   );
 }
 
-// Los tres, siempre visibles: una celda por persona (grilla de hairlines),
-// foto en halftone y datos en mono. Al pasar el mouse (o con foco) la celda
-// sube y se enciende; las otras dos se atenúan. Todo en CSS (:hover,
-// :focus-within y :has), sin estado.
+// Los dos founders, siempre visibles: una celda por persona. Al pasar el
+// mouse (o con foco) la celda sube y se enciende; la otra se atenúa.
 export function Founders() {
   return (
     <section id="equipo" className="section section-compact">
@@ -27,23 +25,23 @@ export function Founders() {
             <h2 className="h2 h2-sm">
               no solo organizamos.
               <br />
-              también construimos.
+              también invertimos.
             </h2>
           </div>
           <p className="founders-aside">
-            Somos Ramiro, Bruno y Mateo.
+            En Picante financiamos y aceleramos
             <br />
-            Construimos productos de IA todos los días.
+            a founders jóvenes, desde el principio.
           </p>
         </Reveal>
 
         <Reveal>
           <ul className="team">
-            {TEAM.map((p, i) => (
+            {FOUNDERS.map((p, i) => (
               <li key={p.key} className="member">
-                <div className="member-photo halftone">
+                <div className="member-photo member-photo-color halftone">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={p.photo} alt={`foto de ${p.name}`} width={360} height={360} loading="lazy" />
+                  <img src={p.photo} alt={`foto de ${p.name}`} width={720} height={720} loading="lazy" />
                   <PixelBlocks id={`px-team-${i}`} cells={PIXELS_SMALL} cols={4} rows={4} className="member-pixels" />
                 </div>
                 <div className="member-id">
@@ -62,12 +60,7 @@ export function Founders() {
                       <LinkedInIcon />
                     </a>
                   </div>
-                  <p className="member-orgs">
-                    {/* como en LinkedIn: primero dónde trabaja, después dónde estudia */}
-                    {p.work.detail} · {p.work.name}
-                    <br />
-                    {p.school.detail} · {p.school.name}
-                  </p>
+                  <p className="member-orgs">{p.note}</p>
                 </div>
               </li>
             ))}

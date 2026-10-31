@@ -17,8 +17,8 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const team = findTeam((await params).n);
   if (!team) return {};
-  const name = `${title(team)} · build 101`;
-  const description = team.oneliner ?? `Equipo ${slug(team)} de build 101.`;
+  const name = `${title(team)} · picanthon`;
+  const description = team.oneliner ?? `Equipo ${slug(team)} de picanthon.`;
   return {
     title: name,
     description,

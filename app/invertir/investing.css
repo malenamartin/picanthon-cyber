@@ -1,4 +1,4 @@
-/* la ronda — inherits build 101's type, color and pixel vocabulary. */
+/* la ronda — inherits picanthon's type, color and pixel vocabulary. */
 .iv-app { min-height: 100vh; background: var(--bg); color: var(--fg-body); }
 .iv-app button, .iv-app a, .iv-app input, .iv-app select { -webkit-tap-highlight-color: transparent; }
 .iv-app button:disabled { cursor: not-allowed; }
@@ -12,7 +12,7 @@
 .iv-nav-divider { height: 24px; width: 1px; background: var(--line-2); }
 .iv-wordmark { font-family: var(--font-mono-stack); font-size: 19px; letter-spacing: -.06em; color: var(--fg); }
 .iv-nav-status { margin-left: auto; display: flex; align-items: center; gap: 9px; font-size: 11px; letter-spacing: .06em; color: var(--muted); }
-.iv-live-dot { display: inline-block; width: 6px; height: 6px; flex-shrink: 0; background: var(--accent); box-shadow: 0 0 10px rgb(59 130 246 / .3); }
+.iv-live-dot { display: inline-block; width: 6px; height: 6px; flex-shrink: 0; background: var(--accent); box-shadow: 0 0 10px rgb(255 51 0 / .3); }
 .iv-back { font-size: 11px; color: var(--muted); margin-left: 22px; }
 .iv-back:hover { color: var(--fg); }
 .iv-subnav { border-bottom: 1px solid var(--line); }
@@ -24,7 +24,7 @@
 .iv-tab-dot { width: 4px; height: 4px; background: var(--accent); margin-left: 4px; }
 .iv-tabs-note { margin-left: auto; align-self: center; color: var(--faint); font-size: 10px; letter-spacing: .05em; }
 .iv-main { padding-top: 24px; padding-bottom: 88px; }
-.iv-demo-note { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: rgb(59 130 246 / .055); border: 1px solid rgb(59 130 246 / .2); color: var(--muted); font-size: 10px; line-height: 1.65; }
+.iv-demo-note { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: rgb(255 51 0 / .055); border: 1px solid rgb(255 51 0 / .2); color: var(--muted); font-size: 10px; line-height: 1.65; }
 .iv-demo-tag { color: var(--accent-text); flex-shrink: 0; letter-spacing: .06em; }
 .iv-hero { display: grid; grid-template-columns: 1.3fr 1fr; align-items: center; padding: 28px 0; gap: 40px; }
 .iv-hero .eyebrow, .iv-results-hero .eyebrow { font-size: 11px; margin-bottom: 12px; }
@@ -75,7 +75,7 @@
 .iv-footer > span:first-child { color: var(--fg-body); }
 .iv-footer > span:nth-child(2) { text-transform: uppercase; font-size: 9px; letter-spacing: .06em; }
 .iv-investor-bar { display: flex; align-items: center; gap: 15px; padding: 18px 22px; border: 1px solid var(--line); background: var(--surface); }
-.iv-avatar { width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid rgb(59 130 246 / .4); background: rgb(59 130 246 / .1); color: var(--accent-text); font-family: var(--font-mono-stack); font-size: 12px; }
+.iv-avatar { width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid rgb(255 51 0 / .4); background: rgb(255 51 0 / .1); color: var(--accent-text); font-family: var(--font-mono-stack); font-size: 12px; }
 .iv-investor-bar > div:nth-child(2) { display: flex; flex-direction: column; gap: 3px; }
 .iv-investor-bar .iv-label { font-size: 9px; }
 .iv-investor-bar strong { font-size: 14px; font-weight: 500; color: var(--fg); }
@@ -94,7 +94,7 @@
 .iv-workspace { display: grid; grid-template-columns: minmax(0, 1fr) 310px; gap: 28px; align-items: start; }
 .iv-invest-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
 .iv-invest-card { min-width: 0; padding: 24px 25px 20px; border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); position: relative; }
-.iv-invest-card.iv-selected { background: rgb(59 130 246 / .035); box-shadow: inset 0 2px 0 var(--accent); }
+.iv-invest-card.iv-selected { background: rgb(255 51 0 / .035); box-shadow: inset 0 2px 0 var(--accent); }
 .iv-invest-card .iv-card-top { margin-bottom: 21px; }
 .iv-invest-card > p { min-height: 44px; max-width: 34ch; }
 .iv-own { background: repeating-linear-gradient(-45deg, transparent, transparent 10px, rgb(255 255 255 / .012) 10px, rgb(255 255 255 / .012) 11px); }
@@ -158,7 +158,7 @@
 .iv-loading { min-height: 260px; display: flex; align-items: center; justify-content: center; gap: 3px; font-family: var(--font-mono-stack); color: var(--muted); font-size: 14px; border: 1px solid var(--line); margin-top: 30px; }
 .iv-error { border: 1px solid rgb(248 113 113 / .4); background: rgb(248 113 113 / .04); padding: 15px 18px; color: var(--fg-body); font-size: 13px; line-height: 1.7; margin-top: 20px; }
 .iv-error button { color: var(--accent-text); text-decoration: underline; margin-left: 8px; }
-.iv-success { display: flex; align-items: center; gap: 16px; border: 1px solid rgb(59 130 246 / .4); background: rgb(59 130 246 / .07); padding: 22px; margin-top: 25px; }
+.iv-success { display: flex; align-items: center; gap: 16px; border: 1px solid rgb(255 51 0 / .4); background: rgb(255 51 0 / .07); padding: 22px; margin-top: 25px; }
 .iv-success-icon { display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid var(--accent); color: var(--accent-text); flex-shrink: 0; }
 .iv-success strong { font-family: var(--font-mono-stack); color: var(--fg); font-size: 14px; font-weight: 500; }
 .iv-success p { font-size: 12px; color: var(--muted); margin-top: 4px; }
@@ -208,9 +208,9 @@
 .iv-ranking-team > div { min-width: 0; }
 .iv-ranking-team strong { display: flex; align-items: center; gap: 12px; font-family: var(--font-mono-stack); font-size: 20px; font-weight: 500; color: var(--fg); letter-spacing: -.04em; }
 .iv-ranking-team > div > span { display: block; color: var(--faint); font-family: var(--font-mono-stack); font-size: 8px; letter-spacing: .04em; margin-top: 5px; }
-.iv-leader { background: rgb(59 130 246 / .055); box-shadow: inset 3px 0 0 var(--accent); }
+.iv-leader { background: rgb(255 51 0 / .055); box-shadow: inset 3px 0 0 var(--accent); }
 .iv-leader .iv-rank { color: var(--accent-text); }
-.iv-leader-tag { font-size: 7px; color: var(--accent-text); padding: 4px 5px; border: 1px solid rgb(59 130 246 / .25); font-weight: 400; letter-spacing: .02em; white-space: nowrap; }
+.iv-leader-tag { font-size: 7px; color: var(--accent-text); padding: 4px 5px; border: 1px solid rgb(255 51 0 / .25); font-weight: 400; letter-spacing: .02em; white-space: nowrap; }
 .iv-ranking-capital { min-width: 0; padding-right: 20px; }
 .iv-ranking-capital > strong { color: var(--fg); font-family: var(--font-mono-stack); font-weight: 500; font-size: 16px; white-space: nowrap; }
 .iv-leader .iv-ranking-capital > strong { color: var(--accent-text); }

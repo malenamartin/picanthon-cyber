@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { CANONICAL_URL } from "../event";
 
-const SHARE_TEXT = `build 101: la hackathon de IA más grande de Uruguay. 17 y 18 de octubre. ${CANONICAL_URL}`;
+const SHARE_TEXT = `Picanthon Cyberseguridad 2026: la hackathon de ciberseguridad. Sábado 5 de diciembre, de 9 a 21 hs, en las oficinas de Safe U en Buenos Aires. ${CANONICAL_URL}`;
 
 export function ShareLinks() {
   const [copied, setCopied] = useState(false);

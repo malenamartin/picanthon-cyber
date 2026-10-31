@@ -38,7 +38,7 @@ export function InvestmentShell({ children }: { children: React.ReactNode }) {
   const results = pathname.endsWith("/resultados");
   return <div className="iv-app">
     <header className="iv-nav"><div className="wrap iv-nav-inner">
-      <Link href="/" aria-label="build 101, inicio"><Logo /></Link>
+      <Link href="/" aria-label="Picante, inicio"><Logo /></Link>
       <span className="iv-nav-divider" />
       <Link href="/invertir" className="iv-wordmark">la ronda<span className="iv-blue">_</span></Link>
       <span className="iv-nav-status"><span className="iv-live-dot" /> {INVESTMENT_GAME.demo ? "MODO DEMO" : INVESTMENT_GAME.open ? "RONDA ABIERTA" : "RONDA CERRADA"}</span>
@@ -50,6 +50,6 @@ export function InvestmentShell({ children }: { children: React.ReactNode }) {
       <span className="iv-tabs-note">CAPITAL FICTICIO. IDEAS REALES.</span>
     </nav></div>
     <main className="wrap iv-main">{children}</main>
-    <footer className="wrap iv-footer"><span>build 101 <span className="iv-dim">/</span> la ronda</span><span>build. ship. invest.</span><span>MONTEVIDEO, 2026 <span className="iv-blue">↗</span></span></footer>
+    <footer className="wrap iv-footer"><span>picanthon <span className="iv-dim">/</span> la ronda</span><span>build. ship. invest.</span><span>MONTEVIDEO, 2026 <span className="iv-blue">↗</span></span></footer>
   </div>;
 }

@@ -1,6 +1,6 @@
 // Fuente: build101 - Acreditaciones.xlsx, hoja Acreditaciones, columnas A–C.
 // Se importan las 99 personas, sin filtrar por llegada ni copiar datos de contacto.
-// Nombres de equipo: build 101 - Competencia - Bombos equipos (1).pdf, cruzados por número.
+// Nombres de equipo: picanthon - Competencia - Bombos equipos (1).pdf, cruzados por número.
 export const INVESTMENT_GAME = {
   roundId: "build101-acreditaciones-preview-v1",
   demo: true,
@@ -187,7 +187,7 @@ export const INVESTMENT_TEAMS: InvestmentTeam[] = FINALIST_TEAM_IDS.length > 0
   ? FINALIST_TEAM_IDS.map((id) => {
     const team = INVESTOR_TEAMS.find((entry) => entry.id === id);
     if (!team) throw new Error(`Equipo finalista desconocido: ${id}`);
-    return { id: team.id, teamId: team.id, name: team.name, category: `EQUIPO ${String(team.number).padStart(2, "0")}`, description: "Producto de IA presentado en build 101." };
+    return { id: team.id, teamId: team.id, name: team.name, category: `EQUIPO ${String(team.number).padStart(2, "0")}`, description: "Producto de IA presentado en picanthon." };
   })
   : INVESTMENT_GAME.demo ? DEMO_PROJECTS : [];
 

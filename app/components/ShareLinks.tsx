@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { CANONICAL_URL } from "../event";
+import { CANONICAL_URL, EVENT_DATES_LONG, EVENT_NAME, VENUE, VENUE_LOCALITY } from "../event";
 
-const SHARE_TEXT = `Picanthon Cyberseguridad 2026: la hackathon de ciberseguridad. Sábado 5 de diciembre, de 9 a 21 hs, en las oficinas de Safe U en Buenos Aires. ${CANONICAL_URL}`;
+const SHARE_TEXT = `${EVENT_NAME}: la hackathon de ciberseguridad. ${EVENT_DATES_LONG}, en ${VENUE}, ${VENUE_LOCALITY}. ${CANONICAL_URL}`;
 
 export function ShareLinks() {
   const [copied, setCopied] = useState(false);

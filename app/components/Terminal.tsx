@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { WindowChrome } from "./WindowChrome";
 import { SPIN, reducedMotion, useInView } from "./useInView";
-import { APPLY_CLOSED_MESSAGE, APPLY_OPEN, SPONSORS_EMAIL } from "../event";
+import { APPLY_CLOSED_MESSAGE, APPLY_OPEN } from "../event";
 
 type Line =
   | { k: "cmd"; text: string }
@@ -238,8 +238,7 @@ function runCommand(
     return {
       out: O(
         <div className="out">
-          gold · silver · partners · instituciones —
-          sumate → <span className="accent">{SPONSORS_EMAIL}</span>
+          todavía no están confirmados.
         </div>,
       ),
     };

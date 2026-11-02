@@ -35,15 +35,28 @@ export function Hero() {
                           <img className="logo-chili" src="/picante-chili.png" alt="" width={338} height={336} />
                           {org.name}
                         </>
+                      ) : org.name === "Faraday" ? (
+                        /* eslint-disable-next-line @next/next/no-img-element */
+                        <img className="logo-faraday" src="/faraday-logo.png" alt="Faraday" width={125} height={26} />
                       ) : org.name === "Fardo" ? (
                         /* eslint-disable-next-line @next/next/no-img-element */
                         <img className="logo-fardo" src="/fardo-logo.png" alt="Fardo" width={616} height={206} />
+                      ) : org.name === "Build101" ? (
+                        /* eslint-disable-next-line @next/next/no-img-element */
+                        <img className="logo-b101" src="/build101-logo.png" alt="Build101" width={1024} height={153} />
                       ) : (
                         org.name
                       )}
                     </a>
                   ) : (
-                    <span className="coorg-name">{org.name}</span>
+                    <span className="coorg-name">
+                      {org.name === "Safe U" ? (
+                        /* eslint-disable-next-line @next/next/no-img-element */
+                        <img className="logo-safeu" src="/safeu-logo.png" alt="Safe U" width={625} height={99} />
+                      ) : (
+                        org.name
+                      )}
+                    </span>
                   )}
                 </li>
               );

@@ -3,7 +3,7 @@ import {
   APPLY_OPEN,
   APPLY_URL,
   CANONICAL_URL,
-  CONTACT_EMAIL,
+  PICANTE_EMAIL,
   CONTENT_UPDATED_ISO,
   EVENT_DESCRIPTION,
   EVENT_END_ISO,
@@ -63,7 +63,7 @@ const structuredData = {
       "@id": organizationId,
       name: SITE_NAME,
       url: SITE_URL,
-      email: CONTACT_EMAIL,
+      email: PICANTE_EMAIL,
       logo: {
         "@type": "ImageObject",
         url: LOGO_URL,
@@ -88,7 +88,7 @@ const structuredData = {
 
       contactPoint: {
         "@type": "ContactPoint",
-        email: CONTACT_EMAIL,
+        email: PICANTE_EMAIL,
         contactType: "customer support",
         availableLanguage: ["es"],
       },
@@ -153,16 +153,19 @@ const structuredData = {
           ...("url" in org && org.url ? { url: org.url } : {}),
         })),
       ],
-      // todos los sponsors, con su categoría tal como se muestra en la página
-      sponsor: TIERS.flatMap((t) =>
-        t.items.map((s) => ({
-          "@type": "Organization",
-          name: s.name,
-          ...(s.url ? { url: s.url } : {}),
-          logo: `${SITE_URL}${s.logo}`,
-          description: t.label,
-        })),
-      ),
+      // sponsors confirmados. Si la lista está vacía, no se publica el campo.
+      ...(() => {
+        const sponsor = TIERS.flatMap((t) =>
+          t.items.map((s) => ({
+            "@type": "Organization",
+            name: s.name,
+            ...(s.url ? { url: s.url } : {}),
+            ...(s.logo ? { logo: `${SITE_URL}${s.logo}` } : {}),
+            description: t.label,
+          })),
+        );
+        return sponsor.length ? { sponsor } : {};
+      })(),
       offers: offer,
       audience: {
         "@type": "Audience",

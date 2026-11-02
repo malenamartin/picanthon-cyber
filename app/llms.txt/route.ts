@@ -7,12 +7,11 @@ import {
   EVENT_DESCRIPTION,
   EVENT_NAME,
   ORGANIZERS,
-  JURY,
   MENTORS_DESCRIPTION,
   APPLY_URL,
   SCHEDULE,
   SOCIALS,
-  TEAM_EMAILS,
+  PICANTE_EMAIL,
   TEAM_SIZE,
   TEAMS_TOTAL,
   VENUE,
@@ -48,7 +47,7 @@ ${
       : `- inscripción: ${APPLY_CLOSED_MESSAGE}`
   }
 - sitio oficial: ${CANONICAL_URL}
-- contacto: ${TEAM_EMAILS.join(" · ")}
+- contacto: ${PICANTE_EMAIL}
 - redes: ${SOCIALS.map((s) => `${s.label.toLowerCase()} ${s.url}`).join(" · ")}
 
 ## organizan
@@ -61,7 +60,7 @@ ${MENTORS_DESCRIPTION}
 
 ## jurado
 
-${JURY.map((j) => `- ${j.name}: ${j.role}${j.note ? ` · ${j.note}` : ""}`).join("\n")}
+el jurado se anuncia cuando esté confirmado.
 
 ## prensa
 
@@ -70,10 +69,16 @@ ${PRESS.map((p) => `- ${p.outlet} (${formatPressDate(p.date)}): "${p.title}" ${p
 
 ## sponsors
 
-${TIERS.map(
-    (t) =>
-      `### ${t.label}\n\n${t.items.map((s) => `- ${s.name}${s.url ? ` (${s.url})` : ""}`).join("\n")}`,
-  ).join("\n\n")}
+${
+  TIERS.some((t) => t.items.length > 0)
+    ? TIERS.filter((t) => t.items.length > 0)
+        .map(
+          (t) =>
+            `### ${t.label}\n\n${t.items.map((s) => `- ${s.name}${s.url ? ` (${s.url})` : ""}`).join("\n")}`,
+        )
+        .join("\n\n")
+    : "todavía no están confirmados."
+}
 
 ## preguntas frecuentes
 

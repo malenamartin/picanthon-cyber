@@ -68,6 +68,7 @@ function Reel({ tier }: { tier: Tier }) {
 }
 
 export function Sponsors() {
+  const tiers = TIERS.filter((t) => t.items.length > 0);
   return (
     <section id="sponsors" className="section">
       <div className="wrap">
@@ -75,11 +76,13 @@ export function Sponsors() {
           <p className="eyebrow">// nos acompañan</p>
           <h2 className="h2">picanthon se construye en equipo.</h2>
           <p className="lede">
-            Partners e instituciones para un sábado de ciberseguridad.
+            {tiers.length
+              ? "Partners e instituciones para un sábado de ciberseguridad."
+              : "Todavía no están confirmados."}
           </p>
         </Reveal>
 
-        {TIERS.map((t) => {
+        {tiers.map((t) => {
           if (t.key === "partners" || t.key === "instituciones") {
             return (
               <Reveal key={t.key}>

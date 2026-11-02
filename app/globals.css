@@ -504,6 +504,12 @@ ol {
   }
 }
 @media (prefers-reduced-motion: reduce) {
+  .footer-mark canvas {
+    display: none;
+  }
+  .footer-mark span {
+    background-image: radial-gradient(circle, var(--accent) 0.011em, transparent 0.013em);
+  }
   .closer-card::before {
     animation: none;
   }
@@ -756,7 +762,7 @@ ol {
   letter-spacing: -0.02em;
   font-variant-numeric: tabular-nums;
 }
-/* organizan: Safe U · Faraday · Talo Pay · Fardo · Picante */
+/* organizan: Safe U · Faraday · Talo Pay · Fardo · Picante · Build101 */
 .coorg-logos {
   display: flex;
   align-items: center;
@@ -822,6 +828,18 @@ ol {
   width: auto;
 }
 .coorg-name .logo-fardo {
+  height: 20px;
+  width: auto;
+}
+.coorg-name .logo-b101 {
+  height: 16px;
+  width: auto;
+}
+.coorg-name .logo-safeu {
+  height: 22px;
+  width: auto;
+}
+.coorg-name .logo-faraday {
   height: 20px;
   width: auto;
 }
@@ -1699,6 +1717,9 @@ ol {
 .press > li {
   display: flex;
 }
+.press > li:only-child {
+  grid-column: 1 / -1;
+}
 /* toda la celda es el link: al pasar el mouse se enciende como las del jurado */
 .press-card {
   display: flex;
@@ -2180,6 +2201,7 @@ ol {
   overflow: hidden;
 }
 .footer-mark {
+  position: relative;
   margin-top: 48px;
   height: 0.28em;
   overflow: hidden;
@@ -2191,12 +2213,37 @@ ol {
   text-align: center;
   white-space: nowrap;
   user-select: none;
+}
+.footer-mark span {
+  display: block;
   color: transparent;
   -webkit-text-fill-color: transparent;
   background-image: radial-gradient(circle, var(--accent) 0.011em, transparent 0.013em);
   background-size: 0.04em 0.04em;
   -webkit-background-clip: text;
   background-clip: text;
+}
+.footer-mark canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.footer-mark[data-live] span {
+  background-image: none;
+}
+.footer-mark:not([data-live]) canvas {
+  display: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .footer-mark canvas {
+    display: none;
+  }
+  .footer-mark[data-live] span {
+    background-image: radial-gradient(circle, var(--accent) 0.011em, transparent 0.013em);
+    background-size: 0.04em 0.04em;
+  }
 }
 .footer-top {
   display: flex;
@@ -2231,25 +2278,6 @@ ol {
   gap: 8px;
 }
 .footer-socials a:hover {
-  color: var(--fg);
-}
-.footer-contacts {
-  display: flex;
-  gap: 48px;
-}
-.footer-name {
-  margin-top: 8px;
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--fg);
-}
-.footer-contacts a {
-  display: inline-block;
-  margin-top: 8px;
-  font-size: 15px;
-  color: var(--fg-body);
-}
-.footer-contacts a:hover {
   color: var(--fg);
 }
 .footer-bottom {
@@ -2858,6 +2886,15 @@ ol {
   .coorg-name .logo-fardo {
     height: clamp(15px, 4.2vw, 18px);
   }
+  .coorg-name .logo-b101 {
+    height: clamp(12px, 3.4vw, 15px);
+  }
+  .coorg-name .logo-safeu {
+    height: clamp(16px, 4.6vw, 20px);
+  }
+  .coorg-name .logo-faraday {
+    height: clamp(14px, 4vw, 18px);
+  }
   .coorg-um {
     height: clamp(26px, 8vw, 34px);
   }
@@ -3162,15 +3199,11 @@ ol {
   }
 
   .footer-top,
-  .footer-contacts,
   .footer-bottom {
     flex-direction: column;
   }
   .footer-top {
     gap: 32px;
-  }
-  .footer-contacts {
-    gap: 20px;
   }
 
   .flow {
@@ -3266,13 +3299,9 @@ ol {
     font-size: 13px;
   }
   /* links chicos del footer: más alto para tocar */
-  .footer-contacts a,
   .footer-socials a {
     display: inline-block;
     padding-block: 6px;
-  }
-  .footer-contacts a {
-    margin-top: 2px;
   }
   .footer-socials a {
     display: inline-flex;

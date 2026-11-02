@@ -6,7 +6,6 @@ import { Recap } from "./components/Recap";
 import { Founders } from "./components/Founders";
 import { Sponsors } from "./components/Sponsors";
 import { Mentors } from "./components/Mentors";
-import { Jury } from "./components/Jury";
 import { FAQ } from "./components/FAQ";
 import { SiteFooter, SiteNav } from "./components/SiteChrome";
 import { WrappedBanner } from "./components/WrappedBanner";
@@ -33,7 +32,6 @@ export default function Home() {
         <EventSection />
         <PressSection />
         <Recap />
-        <Jury />
         <Sponsors />
         <Founders />
         <Mentors />

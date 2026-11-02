@@ -25,27 +25,16 @@ export type PressItem = {
 
 export const PRESS: readonly PressItem[] = [
   {
-    key: "elobservador",
-    outlet: "El Observador",
-    kind: "ciencia y tecnología",
+    key: "forbes",
+    outlet: "Forbes Uruguay",
+    kind: "innovación",
     title:
-      "De un detector de estafas a un examen que se marca con los ojos: la hackatón que dejó más de 30 emprendimientos uruguayos en un fin de semana",
-    dek: "Más de 300 personas se postularon y 99 quedaron seleccionadas para construir, en 48 horas, un producto con inteligencia artificial en el centro.",
-    url: "https://www.elobservador.com.uy/ciencia-y-tecnologia/de-un-detector-estafas-un-examen-que-se-marca-los-ojos-la-hackaton-que-dejo-mas-30-emprendimientos-uruguayos-un-fin-semana-n6060966",
-    date: "2026-10-20",
-    image: "/prensa/elobservador.webp",
-  },
-  {
-    key: "mutuo",
-    outlet: "Mutuo",
-    kind: "crónica",
-    title: "Así fue la picanthon. Primera hackatón de IA de Uruguay",
-    dek: "Qué pasó en la hackathon de IA más grande de Uruguay: el podio, los números del código, los 33 productos y por qué la coorganizaron desde Mutuo.",
-    author: "Guido Iafigliola",
-    url: "https://canalmutuo.com/blog/especiales/build101/",
-    date: "2026-10-20",
-    image: "/prensa/mutuo.webp",
-    coorg: true,
+      "Qué es Picante, el fondo argentino que desembarcó en Uruguay en busca de jóvenes emprendedores talentosos y resilientes",
+    dek: "El fondo y aceleradora Picante desembarcó en Uruguay. La nota recorre el foco en jóvenes fundadores y la Picanthon.",
+    author: "Mariana Malek",
+    url: "https://www.forbesuruguay.com/innovacion/que-picante-fondo-argentino-desembarco-uruguay-busca-jovenes-emprendedores-talentosos-resilientes-n80564",
+    date: "2025-10-28",
+    image: "/prensa/forbes.webp",
   },
 ];
 

@@ -2,9 +2,8 @@ import Link from "next/link";
 import { Logo } from "./Logo";
 import { ShareLinks } from "./ShareLinks";
 import { FooterSocials, NavSocials } from "./Socials";
-import { PICANTE_EMAIL, TEAM } from "../event";
-
-const AREA_LABEL = { participants: "participants", mentors: "mentors", sponsors: "sponsors" } as const;
+import { PICANTE_EMAIL } from "../event";
+import { FooterMark } from "./FooterMark";
 
 /** La nav del sitio. En /equipos va con `page="equipos"`: el botón pasa a
  *  ser "volver al sitio". */
@@ -65,15 +64,6 @@ export function SiteFooter() {
             <p className="footer-tagline">build. ship. defend.</p>
             <FooterSocials />
           </div>
-          <ul className="footer-contacts">
-            {TEAM.map((p) => (
-              <li key={p.key}>
-                <p className="label">{AREA_LABEL[p.area]}</p>
-                <p className="footer-name">{p.name}</p>
-                <a href={`mailto:${p.email}`}>{p.email} ↗</a>
-              </li>
-            ))}
-          </ul>
         </div>
         <div className="footer-bottom">
           <a className="footer-write" href={`mailto:${PICANTE_EMAIL}`}>
@@ -82,9 +72,7 @@ export function SiteFooter() {
           <ShareLinks />
         </div>
       </div>
-      <div className="footer-mark" aria-hidden="true">
-        Picante
-      </div>
+      <FooterMark />
     </footer>
   );
 }

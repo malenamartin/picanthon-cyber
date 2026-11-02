@@ -32,7 +32,7 @@ export default function PrensaPage() {
             <h1 className="h2">prensa.</h1>
           </header>
 
-          <p className="eyebrow">// {PRESS.length} notas</p>
+          <p className="eyebrow">// {PRESS.length === 1 ? "1 nota" : `${PRESS.length} notas`}</p>
           <PressCards full />
 
           <div className="press-contact cells">

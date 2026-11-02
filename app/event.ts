@@ -19,11 +19,11 @@ export const LOGO_URL = `${SITE_URL}/icon`;
 export const SEO_TITLE =
   "Picanthon Cyberseguridad 2026 | Buenos Aires";
 export const SEO_DESCRIPTION =
-  "Picanthon Cyberseguridad 2026 es la hackathon de ciberseguridad. El sábado 5 de diciembre, de 9 a 21 hs, en las oficinas de Safe U en Buenos Aires.";
+  "Picanthon Cyberseguridad 2026 es la hackathon de ciberseguridad. El sábado 12 de diciembre, de 9 a 21 hs, en las oficinas de Safe U en Buenos Aires.";
 
 /** Descripción larga para datos estructurados (Event) y answer engines. */
 export const EVENT_DESCRIPTION =
-  "Picanthon Cyberseguridad 2026 es una hackathon de ciberseguridad, presencial, en las oficinas de Safe U en Buenos Aires. El sábado 5 de diciembre de 2026, de 9 a 21 hs, los equipos buscan fallas, construyen una defensa y la muestran funcionando.";
+  "Picanthon Cyberseguridad 2026 es una hackathon de ciberseguridad, presencial, en las oficinas de Safe U en Buenos Aires. El sábado 12 de diciembre de 2026, de 9 a 21 hs, los equipos buscan fallas, construyen una defensa y la muestran funcionando.";
 
 /** Acompañamiento a los equipos, compartido por la landing y /llms.txt. */
 export const MENTORS_DESCRIPTION =
@@ -31,7 +31,7 @@ export const MENTORS_DESCRIPTION =
 
 /** Última actualización de contenido del sitio (bumpeala con cada anuncio real:
  *  consigna, mentores, jurado, sponsors, cronograma, prensa). Alimenta sitemap y schema. */
-export const CONTENT_UPDATED_ISO = "2026-10-30T00:00:00-03:00";
+export const CONTENT_UPDATED_ISO = "2026-11-02T00:00:00-03:00";
 
 /** ¿Están abiertas las inscripciones?
  *  En `false` la landing no linkea al formulario: los CTAs, la terminal, el FAQ,
@@ -69,25 +69,25 @@ export const VENUE_GEO = { lat: -34.6037, lng: -58.3816 };
 export const VENUE_MAPS =
   "https://www.google.com/maps/search/?api=1&query=Oficinas+Safe+U+Buenos+Aires";
 
-/** Sábado 5 de diciembre de 2026. El domingo no se usa. */
-export const EVENT_DATES = "sáb 5 dic 2026";
-export const EVENT_DATES_LONG = "sábado 5 de diciembre de 2026, de 9 a 21 hs";
+/** Sábado 12 de diciembre de 2026. El domingo no se usa. */
+export const EVENT_DATES = "sáb 12 dic 2026";
+export const EVENT_DATES_LONG = "sábado 12 de diciembre de 2026, de 9 a 21 hs";
 export const EVENT_HOURS = "9 a 21 hs";
-export const EVENT_START_DATE = "2026-12-05";
+export const EVENT_START_DATE = "2026-12-12";
 
 /** Apertura y cierre del mismo sábado. */
-export const EVENT_KICKOFF_ISO = "2026-12-05T09:00:00-03:00";
-export const EVENT_END_ISO = "2026-12-05T21:00:00-03:00";
+export const EVENT_KICKOFF_ISO = "2026-12-12T09:00:00-03:00";
+export const EVENT_END_ISO = "2026-12-12T21:00:00-03:00";
 /** Cierre de código del domingo: fin de la ventana de /wrapped (totales,
  *  "a último minuto"); lo que se commiteó después no cuenta. El script de
  *  ingesta lo lee de acá y se puede pisar en cada corrida con
  *  `CIERRE=HH:MM npm run metrics`. */
-export const CODE_FREEZE_ISO = "2026-12-05T21:00:00-03:00";
+export const CODE_FREEZE_ISO = "2026-12-12T21:00:00-03:00";
 
 /** Un solo día. La sede cierra a la noche. */
 export const SCHEDULE = [
   {
-    day: "sábado 5",
+    day: "sábado 12",
     hours: "09:00 a 21:00",
     note: "Nos encontramos, construimos y mostramos.",
   },
@@ -100,6 +100,7 @@ export const ORGANIZERS = [
   { name: "Talo Pay", url: "https://talo.com.ar" },
   { name: "Fardo", url: "https://www.heyfardo.com" },
   { name: "Picante", url: "https://www.picante.fund/" },
+  { name: "Build101", url: "https://build101.dev" },
 ] as const;
 
 /** Inscripciones: cierre. */

@@ -1,6 +1,6 @@
 # picanthon — sitio
 
-Landing de [Picanthon Cyberseguridad 2026](https://build101.dev): hackathon de ciberseguridad el sábado 5 de diciembre de 2026, de 9 a 21 hs, en las oficinas de Safe U en Buenos Aires. Organizan Safe U, Faraday, Talo Pay, Fardo y Picante.
+Landing de [Picanthon Cyberseguridad 2026](https://build101.dev): hackathon de ciberseguridad el sábado 12 de diciembre de 2026, de 9 a 21 hs, en las oficinas de Safe U en Buenos Aires. Organizan Safe U, Faraday, Talo Pay, Fardo, Picante y Build101.
 
 ## Stack
 

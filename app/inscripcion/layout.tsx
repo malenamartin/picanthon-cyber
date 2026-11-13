@@ -3,9 +3,9 @@ import { FlowNav } from "../components/SiteChrome";
 import { APPLY_CLOSED_MESSAGE, APPLY_OPEN } from "../event";
 
 export const metadata: Metadata = {
-  title: "inscripción · picanthon",
+  title: "inscripción · picathon",
   description: APPLY_OPEN
-    ? "inscribite a picanthon, la hackathon de IA más grande de uruguay: con tu equipo de 3 o solo, y te ayudamos a encontrar con quién construir."
+    ? "inscribite a picathon, la hackathon de IA más grande de uruguay: con tu equipo de 3 o solo, y te ayudamos a encontrar con quién construir."
     : APPLY_CLOSED_MESSAGE,
 };
 

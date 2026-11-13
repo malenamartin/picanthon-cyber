@@ -50,6 +50,6 @@ export function InvestmentShell({ children }: { children: React.ReactNode }) {
       <span className="iv-tabs-note">CAPITAL FICTICIO. IDEAS REALES.</span>
     </nav></div>
     <main className="wrap iv-main">{children}</main>
-    <footer className="wrap iv-footer"><span>picanthon <span className="iv-dim">/</span> la ronda</span><span>build. ship. invest.</span><span>MONTEVIDEO, 2026 <span className="iv-blue">↗</span></span></footer>
+    <footer className="wrap iv-footer"><span>picathon <span className="iv-dim">/</span> la ronda</span><span>build. ship. invest.</span><span>MONTEVIDEO, 2026 <span className="iv-blue">↗</span></span></footer>
   </div>;
 }

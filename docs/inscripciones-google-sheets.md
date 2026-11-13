@@ -1,6 +1,6 @@
 # Inscripciones → Google Sheets
 
-El formulario de `/inscripcion` manda cada postulación a `/api/inscripcion`, que la valida y la agrega como fila en la planilla **picanthon · Postulaciones** (Drive de Ramiro). La escritura la hace un web app de Apps Script pegado a la planilla: no hace falta una cuenta de Google Cloud.
+El formulario de `/inscripcion` manda cada postulación a `/api/inscripcion`, que la valida y la agrega como fila en la planilla **picathon · Postulaciones** (Drive de Ramiro). La escritura la hace un web app de Apps Script pegado a la planilla: no hace falta una cuenta de Google Cloud.
 
 ```
 navegador ──POST──▶ /api/inscripcion (Vercel) ──POST + secreto──▶ Apps Script ──▶ Google Sheet
@@ -8,7 +8,7 @@ navegador ──POST──▶ /api/inscripcion (Vercel) ──POST + secreto─�
 
 ## Configuración (una sola vez, ~5 minutos)
 
-1. **Abrí la planilla** "picanthon · Postulaciones". La fila 1 ya tiene los encabezados; no la borres.
+1. **Abrí la planilla** "picathon · Postulaciones". La fila 1 ya tiene los encabezados; no la borres.
 2. **Pegá el script:** Extensiones → Apps Script. Borrá lo que haya en `Code.gs` y pegá el contenido de [`scripts/google-apps-script/Code.gs`](../scripts/google-apps-script/Code.gs).
 3. **Generá un secreto** (cualquier texto largo y aleatorio, por ejemplo con `openssl rand -hex 32`) y pegalo en `SHARED_SECRET`. Guardá.
 4. **Publicá el web app:** Implementar → Nueva implementación → tipo **Aplicación web**.

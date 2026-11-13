@@ -5,7 +5,7 @@ import { reducedMotion } from "./useInView";
 
 type Cell = { x: number; y: number; inside: boolean; ch: string; at: number; blue: number; set: boolean };
 
-// fondo: caracteres de código; adentro del texto: bits (picanthon)
+// fondo: caracteres de código; adentro del texto: bits (picathon)
 const CHARS = "{}<>/=+*#;:$_build".split("");
 const BITS = ["0", "1"];
 const RADIUS = 64; // radio del puntero (px)

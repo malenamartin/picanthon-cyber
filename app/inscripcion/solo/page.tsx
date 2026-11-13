@@ -4,7 +4,7 @@ import { SignupFlow } from "../../components/SignupFlow";
 import { APPLY_OPEN, APPLY_PATH, APPLY_URL } from "../../event";
 
 export const metadata: Metadata = {
-  title: "busco equipo · picanthon",
+  title: "busco equipo · picathon",
   alternates: { canonical: `${APPLY_URL}/solo` },
 };
 

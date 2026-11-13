@@ -53,13 +53,20 @@ export function IkTrace() {
     let visible = true;
 
     const restY = () => {
+      const lane = band();
+      return (lane.y0 + lane.y1) / 2;
+    };
+
+    const band = () => {
       const title = host.querySelector(".hero-title");
       const lede = host.querySelector(".hero-lede");
       const h = cv.clientHeight;
-      if (!title || !lede || !h) return h * 0.36;
       const top = cv.getBoundingClientRect().top;
-      const gap = (title.getBoundingClientRect().bottom + lede.getBoundingClientRect().top) / 2 - top;
-      return Math.max(8, Math.min(h - 8, gap));
+      if (!title || !lede || !h) return { y0: h * 0.42, y1: h * 0.62 };
+      const y0 = title.getBoundingClientRect().bottom - top + 10;
+      const y1 = lede.getBoundingClientRect().top - top - 10;
+      if (y1 - y0 < 12) return { y0, y1: y0 + 16 };
+      return { y0, y1 };
     };
 
     const layout = () => {
@@ -133,9 +140,11 @@ export function IkTrace() {
 
     const onMove = (event: PointerEvent) => {
       const rect = cv.getBoundingClientRect();
+      const lane = band();
       inside = true;
       aim.x = event.clientX - rect.left;
-      aim.y = event.clientY - rect.top;
+      const y = event.clientY - rect.top;
+      aim.y = Math.min(lane.y1, Math.max(lane.y0, y));
     };
     const onLeave = () => {
       inside = false;
@@ -143,7 +152,7 @@ export function IkTrace() {
       aim.y = restY();
     };
 
-    host.addEventListener("pointermove", onMove);
+    host.addEventListener("pointermove", onMove as EventListener);
     host.addEventListener("pointerleave", onLeave);
     const ro = new ResizeObserver(() => {
       layout();
@@ -163,7 +172,7 @@ export function IkTrace() {
       cancelAnimationFrame(raf);
       ro.disconnect();
       io.disconnect();
-      host.removeEventListener("pointermove", onMove);
+      host.removeEventListener("pointermove", onMove as EventListener);
       host.removeEventListener("pointerleave", onLeave);
     };
   }, []);

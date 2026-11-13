@@ -1,29 +1,29 @@
 // ============================================================
-// <picanthon> — datos del evento (fuente única de verdad)
+// <picathon> — datos del evento (fuente única de verdad)
 // Editá acá y se actualiza en toda la landing, el schema y /llms.txt.
 // ============================================================
 
 /** Identidad pública del sitio. */
-export const SITE_NAME = "Picanthon";
+export const SITE_NAME = "Picathon";
 /** Nombre completo de esta edición. */
-export const EVENT_NAME = "Picanthon Cyberseguridad 2026";
-export const SITE_URL = "https://build101.dev";
+export const EVENT_NAME = "Picathon Cyberseguridad 2026";
+/** El sitio que se comparte. La preview sale de acá, no de build101.dev. */
+export const SITE_URL = "https://picanthon-cyber.vercel.app";
 export const CANONICAL_URL = `${SITE_URL}/`;
-/** Imagen del preview del link: archivo estático app/opengraph-image.jpg (con su
- *  opengraph-image.alt.txt), mismo lenguaje que el flyer de redes. */
+/** Imagen del preview del link: app/opengraph-image.jpg, solo el wordmark de Picante. */
 export const OG_IMAGE_URL = `${SITE_URL}/opengraph-image.jpg`;
-// el logo de marca es el avatar "b_" que renderiza la ruta /icon en build.
+// el logo de marca es el wordmark de Picante en /icon.
 export const LOGO_URL = `${SITE_URL}/icon`;
 
 /** Metadata principal para buscadores (~155 caracteres, sin cortes en SERP). */
 export const SEO_TITLE =
-  "Picanthon Cyberseguridad 2026 | Buenos Aires";
+  "Picathon Cyberseguridad 2026 | Buenos Aires";
 export const SEO_DESCRIPTION =
-  "Picanthon Cyberseguridad 2026 es la hackathon de ciberseguridad. El sábado 12 de diciembre, de 9 a 21 hs, en las oficinas de Safe U en Buenos Aires.";
+  "Picathon Cyberseguridad 2026 es la hackathon de ciberseguridad. El sábado 12 de diciembre, de 9 a 21 hs, en las oficinas de Safe U en Buenos Aires.";
 
 /** Descripción larga para datos estructurados (Event) y answer engines. */
 export const EVENT_DESCRIPTION =
-  "Picanthon Cyberseguridad 2026 es una hackathon de ciberseguridad, presencial, en las oficinas de Safe U en Buenos Aires. El sábado 12 de diciembre de 2026, de 9 a 21 hs, los equipos buscan fallas, construyen una defensa y la muestran funcionando.";
+  "Picathon Cyberseguridad 2026 es una hackathon de ciberseguridad, presencial, en las oficinas de Safe U en Buenos Aires. El sábado 12 de diciembre de 2026, de 9 a 21 hs, los equipos buscan fallas, construyen una defensa y la muestran funcionando.";
 
 /** Acompañamiento a los equipos, compartido por la landing y /llms.txt. */
 export const MENTORS_DESCRIPTION =
@@ -41,14 +41,14 @@ export const APPLY_OPEN: boolean = false;
 
 // Copy del cierre — un solo lugar para editar el anuncio.
 export const APPLY_CLOSED_LABEL = "inscripciones cerradas";
-export const APPLY_CLOSED_MESSAGE = "Las inscripciones están cerradas. Gracias por el interés en picanthon.";
+export const APPLY_CLOSED_MESSAGE = "Las inscripciones están cerradas. Gracias por el interés en picathon.";
 
 /** Ruta del formulario propio (elegir camino: con equipo o buscando uno). */
 export const APPLY_PATH = "/inscripcion";
 export const APPLY_URL = `${SITE_URL}${APPLY_PATH}`;
 
 /** Redes oficiales: se muestran en el footer y alimentan schema.org sameAs
- *  (consolidan la entidad picanthon). */
+ *  (consolidan la entidad picathon). */
 export const SOCIALS = [
   { key: "instagram", label: "Instagram", handle: "@picantestartups", url: "https://www.instagram.com/picantestartups/" },
   { key: "linkedin", label: "LinkedIn", handle: "Picante", url: "https://www.linkedin.com/company/picant-e/" },

@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { Terminal } from "./Terminal";
+import { PixelBlocks, PIXELS_HERO } from "./PixelBlocks";
 import { DayDial, DAY_STOPS, activeStop } from "./DayDial";
 import { reducedMotion } from "./useInView";
 
@@ -64,6 +66,12 @@ export function EventSection() {
           </h2>
           <div className="event-dial-col">
             <div className="event-dial-sticky">
+              <PixelBlocks
+                id="px-day"
+                cells={PIXELS_HERO}
+                progress={reduced ? 1 : value}
+                className="event-pixels"
+              />
               <DayDial
                 value={value}
                 reduced={reduced}
@@ -98,6 +106,10 @@ export function EventSection() {
             </li>
           ))}
         </ol>
+        <div className="event-terminal">
+          <p className="eyebrow">preguntale</p>
+          <Terminal />
+        </div>
       </div>
     </section>
   );

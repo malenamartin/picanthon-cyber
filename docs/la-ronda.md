@@ -1,4 +1,4 @@
-# La ronda · picanthon
+# La ronda · picathon
 
 Juego en `/invertir`. Ranking en `/invertir/resultados`. La vista previa ya usa la nómina real de acreditaciones.
 
@@ -16,7 +16,7 @@ Juego en `/invertir`. Ranking en `/invertir/resultados`. La vista previa ya usa 
 
 Editar **`lib/investment-game.ts`**:
 
-1. `INVESTOR_TEAMS` contiene los **33 equipos y 99 participantes** de `build101 - Acreditaciones.xlsx`, hoja `Acreditaciones`, columnas A–C (filas 2–100). Se conserva la asociación del archivo, incluidos los dos participantes sin marca de llegada. Los nombres de los 33 equipos se actualizan desde `picanthon - Competencia - Bombos equipos (1).pdf`, páginas 1–3, cruzando la columna «Número de equipo» con la numeración de acreditaciones. No se importan emails, teléfonos ni observaciones.
+1. `INVESTOR_TEAMS` contiene los **33 equipos y 99 participantes** de `build101 - Acreditaciones.xlsx`, hoja `Acreditaciones`, columnas A–C (filas 2–100). Se conserva la asociación del archivo, incluidos los dos participantes sin marca de llegada. Los nombres de los 33 equipos se actualizan desde `picathon - Competencia - Bombos equipos (1).pdf`, páginas 1–3, cruzando la columna «Número de equipo» con la numeración de acreditaciones. No se importan emails, teléfonos ni observaciones.
 2. Los IDs de equipo (`equipo-01` a `equipo-33`) siguen la numeración de acreditaciones. Cada participante tiene un ID único, una cartera y US$ 1.000.000. Los totales se derivan de las 99 personas.
 3. `FINALIST_TEAM_IDS` habilita los **9 equipos confirmados para recibir inversiones**, en este orden: **6 b&niks, 14 TokenMaxxers, 32 La Compu de Cesar, 11 furIA, 3 Sayso, 31 Luxis, 12 Claude & Asociados, 18 Argos y 1 Beyond The Bot**. Los nombres se actualizan también en la selección de equipo. La nómina de votantes sigue incluyendo a los 33 equipos; elegir finalistas no excluye a nadie de votar. El vínculo `teamId` bloquea en interfaz y servidor a los integrantes del propio equipo finalista.
 4. Las opciones de inversión y el ranking muestran solo esos nueve equipos, sin un décimo casillero pendiente. No se asignan votos ficticios a las personas reales (`seedDemoInvestments: false`). La ronda `build101-acreditaciones-preview-v1` separa sus carteras de los datos de prueba anteriores; los registros guardados se vuelven a validar contra los finalistas actuales.

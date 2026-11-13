@@ -5,11 +5,17 @@ import { SPIN, reducedMotion } from "./useInView";
 import { fireConfetti } from "./confetti";
 import { APPLY_OPEN, APPLY_PATH, APPLY_CLOSED_LABEL } from "../event";
 
-const STEPS = [
-  { run: "building…", ok: "compiled ✓", ms: 650 },
-  { run: "running tests…", ok: "5 passed ✓", ms: 650 },
-  { run: "abriendo inscripción…", ok: "redirect → /inscripcion ✓", ms: 800 },
-];
+const STEPS = APPLY_OPEN
+  ? [
+      { run: "building…", ok: "compiled ✓", ms: 650 },
+      { run: "running tests…", ok: "5 passed ✓", ms: 650 },
+      { run: "abriendo inscripción…", ok: "redirect → /inscripcion ✓", ms: 800 },
+    ]
+  : [
+      { run: "building…", ok: "compiled ✓", ms: 650 },
+      { run: "running tests…", ok: "5 passed ✓", ms: 650 },
+      { run: "revisando cupo…", ok: "inscripciones cerradas", ms: 800 },
+    ];
 
 function openApply() {
   window.location.assign(APPLY_PATH);
@@ -29,14 +35,12 @@ export function DeployFX() {
 
   useEffect(() => {
     const onDeploy = () => {
-      // guardia: con las inscripciones cerradas no hay a dónde redirigir.
-      if (!APPLY_OPEN) return;
       if (busy.current) return;
       busy.current = true;
 
       if (reducedMotion()) {
         busy.current = false;
-        openApply();
+        if (APPLY_OPEN) openApply();
         return;
       }
 
@@ -48,17 +52,18 @@ export function DeployFX() {
         acc += s.ms;
         timers.push(setTimeout(() => setStep(i + 1), acc));
       });
-      // LIVE moment
-      timers.push(
-        setTimeout(() => {
-          fireConfetti({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
-        }, acc + 60),
-      );
+      if (APPLY_OPEN) {
+        timers.push(
+          setTimeout(() => {
+            fireConfetti({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
+          }, acc + 60),
+        );
+      }
       timers.push(
         setTimeout(() => {
           setOpen(false);
           busy.current = false;
-          openApply();
+          if (APPLY_OPEN) openApply();
         }, acc + 1100),
       );
     };
@@ -103,7 +108,11 @@ export function DeployFX() {
           })}
           <div className={`deploy-live ${live ? "on" : ""}`}>
             <span className="live-dot" />{" "}
-            {live ? "abriendo inscripción…" : "esperando deploy…"}
+            {live
+              ? APPLY_OPEN
+                ? "abriendo inscripción…"
+                : "inscripciones cerradas"
+              : "esperando deploy…"}
           </div>
         </div>
       </div>

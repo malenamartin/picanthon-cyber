@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Inter } from "next/font/google";
-import { GeistPixelCircle } from "geist/font/pixel";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import {
   CANONICAL_URL,
+  OG_IMAGE_URL,
   SEO_DESCRIPTION,
   SEO_TITLE,
   SITE_NAME,
@@ -11,10 +11,8 @@ import {
 import { PointerSpot } from "./components/PointerSpot";
 import "./globals.css";
 
-// Tres roles: Geist Pixel (Circle) para titulares, Geist Sans para leer
-// (texto, formularios) y Geist Mono para la voz "terminal" (wordmark, nav,
-// labels, terminal, números).
-// Variable fonts: sin `weight` se sirve el eje completo.
+// Tres voces: Instrument Serif para la tapa y los titulares, Geist Sans para
+// leer, Geist Mono para hora, sede, comandos y labels.
 const sans = Geist({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -25,10 +23,10 @@ const mono = Geist_Mono({
   variable: "--font-mono",
   display: "swap",
 });
-const picante = Inter({
+const display = Instrument_Serif({
   subsets: ["latin"],
-  weight: "900",
-  variable: "--font-picante",
+  weight: "400",
+  variable: "--font-display",
   display: "swap",
 });
 
@@ -45,8 +43,8 @@ export const metadata: Metadata = {
     },
   },
   keywords: [
-    "picanthon",
-    "Picanthon Cyberseguridad 2026",
+    "picathon",
+    "Picathon Cyberseguridad 2026",
     "hackathon ciberseguridad",
     "hackathon buenos aires",
     "ciberseguridad",
@@ -67,20 +65,21 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  // La imagen OG/Twitter es app/opengraph-image.jpg (file convention, con su
-  // .alt.txt); X/Twitter cae en og:image automáticamente.
+  // La imagen OG/Twitter es app/opengraph-image.jpg: solo el wordmark de Picante.
   openGraph: {
     title: SEO_TITLE,
     description: SEO_DESCRIPTION,
     url: CANONICAL_URL,
-    siteName: SITE_NAME,
-    locale: "es_UY",
+    siteName: "Picante",
+    locale: "es_AR",
     type: "website",
+    images: [{ url: OG_IMAGE_URL, width: 1200, height: 630, alt: "Picante" }],
   },
   twitter: {
     card: "summary_large_image",
     title: SEO_TITLE,
     description: SEO_DESCRIPTION,
+    images: [OG_IMAGE_URL],
   },
   category: "event",
 };
@@ -97,7 +96,7 @@ export default function RootLayout({
   return (
     // Un solo tema: el color sale de los tokens del CSS, así que no hay script
     // de pre-paint, ni data-theme, ni riesgo de flash de tema equivocado.
-    <html lang="es-AR" className={`${sans.variable} ${mono.variable} ${picante.variable} ${GeistPixelCircle.variable}`}>
+    <html lang="es-AR" className={`${sans.variable} ${mono.variable} ${display.variable}`}>
       <body>
         {children}
         <PointerSpot />

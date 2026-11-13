@@ -1,4 +1,4 @@
-/* la ronda — inherits picanthon's type, color and pixel vocabulary. */
+/* la ronda — inherits picathon's type, color and pixel vocabulary. */
 .iv-app { min-height: 100vh; background: var(--bg); color: var(--fg-body); }
 .iv-app button, .iv-app a, .iv-app input, .iv-app select { -webkit-tap-highlight-color: transparent; }
 .iv-app button:disabled { cursor: not-allowed; }

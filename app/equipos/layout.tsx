@@ -5,8 +5,8 @@ import "./equipos.css";
 // Fuera del menú y del sitemap: se comparte por link. Tiene nombres y LinkedIn
 // de los participantes, así que tampoco se indexa.
 export const metadata: Metadata = {
-  title: "los equipos · picanthon",
-  description: "13 equipos construyeron en un fin de semana. Conocé qué hicieron y quiénes son.",
+  title: "próximamente · picathon",
+  description: "Los equipos de Picathon Cyberseguridad 2026 se publican cuando estén.",
   robots: { index: false, follow: false },
 };
 

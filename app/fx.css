@@ -1,5 +1,5 @@
 /* ============================================================
-   <picanthon> — capa de terminal, easter eggs y motion
+   <picathon> — capa de terminal, easter eggs y motion
    (heredado de la versión anterior; usa los tokens de globals.css)
    ============================================================ */
 
@@ -139,7 +139,7 @@
 
 /* la sede: cinta horizontal (marquee) de fotos reales de FIUM — varias fotos
    visibles a la vez, desplazándose solas en loop. En reposo van en duotono azul (grises + multiply del accent) para que la
-   marca picanthon mande; cada foto pasa a color al hover/focus. El duotono
+   marca picathon mande; cada foto pasa a color al hover/focus. El duotono
    va al 55% para que se lea la estructura del edificio, y una máscara funde
    la cinta con el fondo en los dos extremos. */
 .sedem {
@@ -224,23 +224,24 @@
 .scroll-bar {
   position: fixed;
   top: 0;
+  bottom: 0;
   left: 0;
-  right: 0;
-  height: 3px;
+  width: 3px;
+  height: auto;
   background: var(--accent);
   z-index: 100;
-  transform-origin: 0 50%;
-  transform: scaleX(0);
+  transform-origin: 50% 0;
+  transform: scaleY(0);
   transition: transform 0.08s linear;
 }
 /* con scroll-driven animations la barra es CSS puro, atada al scroll del
    documento; ScrollProgress.tsx solo corre como respaldo donde no hay. */
 @keyframes scroll-grow {
   from {
-    transform: scaleX(0);
+    transform: scaleY(0);
   }
   to {
-    transform: scaleX(1);
+    transform: scaleY(1);
   }
 }
 @supports (animation-timeline: scroll()) {
@@ -493,10 +494,15 @@
 /* ---- konami matrix overlay ---- */
 .matrix-overlay {
   position: fixed;
-  inset: 0;
-  z-index: 9997;
+  right: 24px;
+  bottom: 24px;
+  z-index: 80;
+  width: min(340px, calc(100vw - 32px));
+  height: 210px;
+  overflow: hidden;
   pointer-events: none;
-  background: rgba(0, 0, 0, 0.86);
+  background: #000;
+  border: 1px solid var(--line-2);
   animation: matrix-fade 0.4s ease both;
 }
 @keyframes matrix-fade {
@@ -513,19 +519,14 @@
 }
 .matrix-toast {
   position: absolute;
-  left: 50%;
-  bottom: 48px;
-  transform: translateX(-50%);
+  left: 16px;
+  right: 16px;
+  bottom: 14px;
   font-family: var(--font-mono-stack);
-  font-size: 14px;
-  color: #e5e5e5;
-  background: var(--panel);
-  border: 1px solid #404040;
-  border-radius: var(--radius);
-  padding: 12px 20px;
-  white-space: nowrap;
-  box-shadow: none;
-  animation: toast-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+  color: var(--fg);
 }
 @keyframes toast-in {
   from {

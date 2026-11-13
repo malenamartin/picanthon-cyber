@@ -1,5 +1,5 @@
 // ============================================================
-// <picanthon> — prensa (fuente única de verdad)
+// <picathon> — prensa (fuente única de verdad)
 // Alimenta /prensa, la franja de la landing, el schema (subjectOf) y
 // /llms.txt. Para sumar una nota: agregá un objeto acá y su imagen 16:9
 // (1200×675, webp) en public/prensa/. Los titulares van textuales: son citas.
@@ -19,7 +19,7 @@ export type PressItem = {
   /** fecha de publicación (YYYY-MM-DD) */
   date: string;
   image: string;
-  /** el medio también coorganizó picanthon (se marca para ser transparentes) */
+  /** el medio también coorganizó picathon (se marca para ser transparentes) */
   coorg?: boolean;
 };
 
@@ -30,7 +30,7 @@ export const PRESS: readonly PressItem[] = [
     kind: "innovación",
     title:
       "Qué es Picante, el fondo argentino que desembarcó en Uruguay en busca de jóvenes emprendedores talentosos y resilientes",
-    dek: "El fondo y aceleradora Picante desembarcó en Uruguay. La nota recorre el foco en jóvenes fundadores y la Picanthon.",
+    dek: "El fondo y aceleradora Picante desembarcó en Uruguay. La nota recorre el foco en jóvenes fundadores y la Picathon.",
     author: "Mariana Malek",
     url: "https://www.forbesuruguay.com/innovacion/que-picante-fondo-argentino-desembarco-uruguay-busca-jovenes-emprendedores-talentosos-resilientes-n80564",
     date: "2025-10-28",

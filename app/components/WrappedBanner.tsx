@@ -30,10 +30,10 @@ function Strip({ hidden = false }: { hidden?: boolean }) {
 
 export function WrappedBanner() {
   return (
-    <Link href="/wrapped" className="wbanner" aria-label="picanthon wrapped disponible: mirá los números de la hackathon">
+    <Link href="/wrapped" className="wbanner" aria-label="picathon wrapped disponible: mirá los números de la hackathon">
       <span className="wbanner-tag">
         <span className="wbanner-dot" aria-hidden />
-        picanthon wrapped
+        picathon wrapped
       </span>
       <span className="wbanner-rail">
         {/* dos copias iguales: la animación corre una y la otra la reemplaza sin salto */}

@@ -45,13 +45,17 @@ export function PixelBlocks({
   cols = 8,
   rows = 8,
   className = "",
+  progress = 1,
 }: {
   id: string;
   cells: Cell[];
   cols?: number;
   rows?: number;
   className?: string;
+  /** 0–1. Los bloques se arman de a uno. 1 muestra la pieza completa. */
+  progress?: number;
 }) {
+  const shown = Math.max(0, Math.min(cells.length, Math.ceil(cells.length * progress)));
   const u = 10;
   return (
     <svg
@@ -70,7 +74,7 @@ export function PixelBlocks({
           <rect width="1.25" height="1.25" fill="var(--pixel)" />
         </pattern>
       </defs>
-      {cells.map(([x, y, kind]) => (
+      {cells.slice(0, shown).map(([x, y, kind]) => (
         <rect
           key={`${x}-${y}`}
           x={x * u}

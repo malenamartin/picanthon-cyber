@@ -1,11 +1,8 @@
 /* ============================================================
-   <picanthon> — sistema visual v4 ("ship")
-   Negro puro, hairlines y cero radio: la estructura la dan las celdas que
-   comparten borde, no tarjetas sueltas. Tres voces: Geist Pixel para
-   titulares, Geist Sans para leer y Geist Mono (mayúsculas) para nav, labels
-   y datos. Un solo elemento brillante por pantalla (el CTA blanco con esquinas
-   escalonadas); el azul vive en los bloques pixel, links y duotonos.
-   Referencias: Vercel Ship y Next.js Conf.
+   <picathon> — tapa
+   Negro, filetes y cero radio. Tres voces: una serif de tapa para el nombre
+   y los titulares, Geist Sans para leer, Geist Mono para hora, sede y
+   comandos. Un solo naranja. Un capítulo en papel al cierre.
    ============================================================ */
 @import "./fx.css";
 
@@ -50,8 +47,10 @@
 
   --font-sans-stack: var(--font-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono-stack: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
-  --font-display-stack: var(--font-geist-pixel-circle), var(--font-mono-stack);
-  --font-picante-stack: var(--font-picante), var(--font-sans-stack);
+  --font-display-stack: var(--font-display), "Iowan Old Style", Palatino, Georgia, serif;
+  --font-picante-stack: var(--font-display-stack);
+  --paper: #f3eee4;
+  --paper-ink: #1c1612;
 
   /* tokens que usa fx.css (terminal, easter eggs) */
   --panel: #000000;
@@ -150,7 +149,7 @@ ol {
   padding: 0 var(--gutter);
 }
 .section {
-  padding: 78px 0;
+  padding: 112px 0;
   border-top: 1px solid var(--line);
 }
 .section-alt {
@@ -194,10 +193,10 @@ ol {
 }
 .h2 {
   font-family: var(--font-display-stack);
-  font-size: clamp(38px, 4.8vw, 64px);
-  font-weight: 500;
-  line-height: 1.04;
-  letter-spacing: -0.04em;
+  font-size: clamp(40px, 5vw, 68px);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
   color: var(--fg);
   text-wrap: balance;
 }
@@ -238,14 +237,14 @@ ol {
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: 0.28em;
-  font-family: var(--font-picante-stack);
-  font-size: 28px;
-  font-weight: 900;
-  letter-spacing: -0.04em;
   line-height: 1;
   color: var(--fg);
-  white-space: nowrap;
+}
+.logo img {
+  display: block;
+  height: 34px;
+  width: auto;
+  mix-blend-mode: screen;
 }
 .logo-chili {
   display: block;
@@ -610,40 +609,44 @@ ol {
   font-weight: 500;
   color: var(--fg-body);
 }
-/* marco del hero: copy a la izquierda y terminal a la derecha, en celdas */
+/* marco del hero: la frase a la izquierda, el cartel de puntos a la derecha */
 .hero-frame {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 468px;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  min-height: 62vh;
   border: 1px solid var(--line);
   border-top: 0;
 }
-/* coorganizan: tira arriba del marco del hero (logos arriba, datos abajo) */
+/* coorganizan: logos abajo de la fecha y la sede */
 .coorg {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 32px;
-  margin-top: 20px;
-  padding: 12px 28px;
+  margin-top: 0;
+  padding: 22px 28px;
   border: 1px solid var(--line);
+  border-top: 0;
 }
 .hero-copy {
   position: relative;
   z-index: 1;
-  padding: 44px 56px 36px;
-  border-right: 1px solid var(--line);
+  max-width: 720px;
+  padding: 56px 56px 48px;
 }
 .hero-title {
   font-family: var(--font-display-stack);
-  font-size: clamp(40px, 4.8vw, 70px);
-  font-weight: 500;
-  line-height: 1.02;
-  letter-spacing: -0.04em;
+  max-width: 12ch;
+  font-size: clamp(52px, 6.4vw, 92px);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
   color: var(--fg);
 }
 .hero-lede {
-  margin-top: 26px;
+  margin-top: 72px;
+  max-width: 28em;
   font-size: 20px;
   line-height: 28px;
   color: var(--fg-body);
@@ -679,8 +682,19 @@ ol {
   z-index: 1;
   display: flex;
   align-items: center;
-  padding: 56px 28px;
+  justify-content: center;
+  padding: 40px 28px;
   overflow: hidden;
+  background: var(--bg);
+}
+.dot-phrase {
+  width: min(100%, 440px);
+  height: min(68%, 420px);
+}
+.dot-phrase canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 .ik-trace {
   position: absolute;
@@ -728,10 +742,10 @@ ol {
 .term-n {
   color: var(--fg-body);
 }
-/* fila de datos debajo del marco (fechas · sede · cuenta regresiva) */
+/* fila de datos debajo del contador (fecha · sede) */
 .hero-meta {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   border: 1px solid var(--line);
   border-top: 0;
 }
@@ -757,10 +771,91 @@ ol {
   text-transform: uppercase;
   color: var(--fg);
 }
-.hero-meta .countdown {
-  font-size: 22px;
-  letter-spacing: -0.02em;
+.kickoff {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 28px 32px 26px;
+  border: 1px solid var(--line);
+  border-top: 0;
+}
+.kickoff-label {
+  margin-bottom: 10px;
+  font-family: var(--font-mono-stack);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+}
+.kickoff-units {
+  display: flex;
+  align-items: flex-end;
+  gap: 36px;
+  list-style: none;
+}
+.kickoff-n {
+  display: block;
+  font-family: var(--font-display-stack);
+  font-size: clamp(64px, 8vw, 104px);
+  font-weight: 400;
+  line-height: 0.8;
+  letter-spacing: -0.04em;
   font-variant-numeric: tabular-nums;
+  color: var(--fg);
+}
+.kickoff-u {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  font-family: var(--font-mono-stack);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.kickoff-tick {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  animation: kickoff-blink 1s steps(1, end) infinite;
+}
+@keyframes kickoff-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  46%,
+  100% {
+    opacity: 0.12;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kickoff-tick {
+    animation: none;
+  }
+}
+.hero-orgs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 18px;
+  font-family: var(--font-mono-stack);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.hero-orgs a {
+  color: var(--muted);
+}
+.hero-orgs a:hover {
+  color: var(--fg);
 }
 /* organizan: Safe U · Faraday · Talo Pay · Fardo · Picante · Build101 */
 .coorg-logos {
@@ -815,10 +910,10 @@ ol {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-picante-stack);
-  font-size: 22px;
-  font-weight: 900;
-  letter-spacing: -0.04em;
+  font-family: var(--font-sans-stack);
+  font-size: 18px;
+  font-weight: 650;
+  letter-spacing: -0.03em;
   line-height: 1;
   color: var(--fg);
   white-space: nowrap;
@@ -843,6 +938,11 @@ ol {
   height: 20px;
   width: auto;
 }
+.coorg-name .logo-picante {
+  height: 28px;
+  width: auto;
+  mix-blend-mode: screen;
+}
 
 /* ---------- el evento ---------- */
 .event-stage {
@@ -864,6 +964,12 @@ ol {
 .event-dial-sticky {
   position: sticky;
   top: 96px;
+}
+.event-pixels {
+  display: block;
+  width: 88px;
+  height: auto;
+  margin: 0 0 16px;
 }
 .day-beats {
   grid-area: beats;
@@ -901,8 +1007,9 @@ ol {
 .event-stage.is-still .day-beat .h3 {
   color: var(--fg);
 }
-.step.is-on .step-n {
-  color: var(--accent-text);
+.event-terminal {
+  margin-top: 72px;
+  max-width: 640px;
 }
 
 /* dial del sábado: la cúpula es redonda a propósito; el resto del sitio sigue cuadrado */
@@ -1891,31 +1998,33 @@ ol {
 }
 
 /* ---------- cierre ---------- */
+.closer {
+  background: var(--paper);
+  color: var(--paper-ink);
+  border-top-color: var(--paper-ink);
+}
 .closer-card {
   position: relative;
   overflow: hidden;
-  padding: 72px 48px;
-  border: 1px solid var(--line);
-  background: #000;
-  text-align: center;
+  padding: 8px 0 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
 }
 .closer-card::before {
-  content: "";
-  position: absolute;
-  inset: -30%;
-  background:
-    radial-gradient(42% 55% at 18% 88%, rgb(255 51 0 / 0.5), transparent 70%),
-    radial-gradient(38% 48% at 86% 12%, rgb(255 51 0 / 0.28), transparent 68%);
-  animation: closer-wash 18s var(--ease-rise) infinite alternate;
-  pointer-events: none;
+  content: none;
 }
 .closer-card > * {
   position: relative;
   z-index: 1;
 }
+.closer .h2,
+.closer .closer-lede {
+  color: var(--paper-ink);
+}
 .closer-lede {
-  margin: 20px auto 0;
-  max-width: 36em;
+  margin: 20px 0 0;
+  max-width: 22em;
   font-size: 18px;
   line-height: 1.45;
   color: var(--fg-body);
@@ -1923,18 +2032,19 @@ ol {
 .closer-actions {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 12px;
   margin-top: 36px;
 }
 .closer-secondary {
-  border-color: var(--line-ctl);
+  border-color: var(--paper-ink);
   background: transparent;
-  color: var(--fg);
+  color: var(--paper-ink);
 }
 .closer-secondary:hover {
-  border-color: var(--fg);
-  background: var(--surface);
+  border-color: var(--paper-ink);
+  background: transparent;
+  color: var(--accent);
 }
 @keyframes closer-wash {
   from {
@@ -2253,8 +2363,8 @@ ol {
   padding-bottom: 40px;
   border-bottom: 1px solid var(--line-2);
 }
-.footer-logo {
-  font-size: 36px;
+.footer-logo img {
+  height: 42px;
 }
 .footer-tagline {
   margin-top: 16px;
@@ -2711,7 +2821,11 @@ ol {
    ============================================================ */
 @media (max-width: 1100px) {
   .hero-frame {
-    grid-template-columns: minmax(0, 1fr) 400px;
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+  .hero-side {
+    display: none;
   }
   .hero-copy {
     padding: 48px 40px;
@@ -2765,7 +2879,7 @@ ol {
     display: none;
   }
   .closer-card {
-    padding: 48px 22px;
+    padding: 8px 0 0;
   }
   .closer-actions {
     flex-direction: column;
@@ -2774,8 +2888,8 @@ ol {
   .topnav-inner {
     min-height: 64px;
   }
-  .logo {
-    font-size: 22px;
+  .logo img {
+    height: 26px;
   }
   .btn-sm {
     min-height: 40px;
@@ -2794,18 +2908,15 @@ ol {
     grid-template-columns: minmax(0, 1fr);
   }
   .hero-copy {
+    max-width: none;
     padding: 36px 22px 32px;
-    border-right: 0;
-    border-bottom: 1px solid var(--line);
   }
   .hero-title {
-    font-size: clamp(40px, 12vw, 60px);
-    line-height: 1.02;
-  }
-  .br-m {
-    display: inline;
+    font-size: clamp(44px, 13vw, 64px);
+    line-height: 0.94;
   }
   .hero-lede {
+    margin-top: 40px;
     font-size: 18px;
     line-height: 26px;
   }
@@ -2837,8 +2948,20 @@ ol {
   .hero-meta .countdown {
     font-size: 18px;
   }
-  /* orden en el celular: coorganizan → copy → datos → terminal. El marco se
-     "abre" (display: contents) para que la terminal baje después de los datos. */
+  .kickoff {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 22px 20px 20px;
+    order: 3;
+  }
+  .kickoff-units {
+    gap: 18px;
+  }
+  .kickoff-n {
+    font-size: clamp(52px, 16vw, 72px);
+  }
+  /* orden en el celular: la frase, los datos, quién organiza. */
   .hero .wrap {
     display: flex;
     flex-direction: column;
@@ -2850,9 +2973,7 @@ ol {
     display: none;
   }
   .coorg {
-    order: 1;
-    margin-top: 16px;
-    padding: 14px 14px;
+    order: 5;
   }
   .hero-copy {
     order: 2;
@@ -2860,7 +2981,7 @@ ol {
     border-top: 0;
   }
   .hero-meta {
-    order: 3;
+    order: 4;
   }
   .hero-side {
     order: 4;
@@ -2894,6 +3015,9 @@ ol {
   }
   .coorg-name .logo-faraday {
     height: clamp(14px, 4vw, 18px);
+  }
+  .coorg-name .logo-picante {
+    height: clamp(16px, 4.6vw, 20px);
   }
   .coorg-um {
     height: clamp(26px, 8vw, 34px);
@@ -3248,8 +3372,8 @@ ol {
     flex-direction: column;
     align-items: flex-start;
   }
-  .footer-logo {
-    font-size: 30px;
+  .footer-logo img {
+    height: 32px;
   }
 }
 
@@ -3322,8 +3446,8 @@ ol {
   .topnav-inner {
     gap: 8px;
   }
-  .topnav-inner .logo {
-    font-size: 20px;
+  .topnav-inner .logo img {
+    height: 22px;
   }
   .topnav-end {
     gap: 2px;

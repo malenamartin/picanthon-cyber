@@ -3,8 +3,8 @@ import { InvestmentShell } from "./ui";
 import "./investing.css";
 
 export const metadata: Metadata = {
-  title: "la ronda · picanthon",
-  description: "Un millón de dólares de juego. Invertí en los equipos que creas que tienen más futuro en picanthon.",
+  title: "la ronda · picathon",
+  description: "Un millón de dólares de juego. Invertí en los equipos que creas que tienen más futuro en picathon.",
   alternates: { canonical: "/invertir" },
   robots: { index: false, follow: false },
 };

@@ -53,33 +53,36 @@ export function KonamiMatrix() {
     if (!ctx) return;
 
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    let w = (canvas.width = window.innerWidth * dpr);
-    let h = (canvas.height = window.innerHeight * dpr);
-    canvas.style.width = `${window.innerWidth}px`;
-    canvas.style.height = `${window.innerHeight}px`;
-    ctx.scale(dpr, dpr);
-    const vw = window.innerWidth;
-    const vh = window.innerHeight;
+    const box = canvas.parentElement ?? canvas;
+    const resize = () => {
+      const vw = box.clientWidth;
+      const vh = box.clientHeight;
+      canvas.width = vw * dpr;
+      canvas.height = vh * dpr;
+      canvas.style.width = `${vw}px`;
+      canvas.style.height = `${vh}px`;
+      return { vw, vh };
+    };
+    let { vw, vh } = resize();
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-    const fontSize = 16;
-    const cols = Math.floor(vw / fontSize);
-    const drops = Array.from({ length: cols }, () =>
-      Math.floor((Math.random() * vh) / fontSize),
-    );
+    const fontSize = 14;
+    let cols = Math.max(1, Math.floor(vw / fontSize));
+    let drops = Array.from({ length: cols }, () => Math.floor((Math.random() * vh) / fontSize));
 
     let raf = 0;
     const draw = () => {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.12)";
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.fillStyle = "rgba(0, 0, 0, 0.16)";
       ctx.fillRect(0, 0, vw, vh);
       ctx.font = `${fontSize}px ui-monospace, monospace`;
       for (let i = 0; i < cols; i++) {
         const ch = MATRIX_CHARS[(Math.random() * MATRIX_CHARS.length) | 0];
         const x = i * fontSize;
         const y = drops[i] * fontSize;
-        ctx.fillStyle =
-          Math.random() < 0.04 ? "#ffffff" : Math.random() < 0.5 ? "#a3a3a3" : "#525252";
+        ctx.fillStyle = Math.random() < 0.08 ? "#ff3300" : "#a3a3a3";
         ctx.fillText(ch, x, y);
-        if (y > vh && Math.random() > 0.975) drops[i] = 0;
+        if (y > vh && Math.random() > 0.96) drops[i] = 0;
         drops[i]++;
       }
       raf = requestAnimationFrame(draw);
@@ -87,13 +90,13 @@ export function KonamiMatrix() {
     raf = requestAnimationFrame(draw);
 
     const onResize = () => {
-      w = canvas.width = window.innerWidth * dpr;
-      h = canvas.height = window.innerHeight * dpr;
-      ctx.scale(dpr, dpr);
+      ({ vw, vh } = resize());
+      cols = Math.max(1, Math.floor(vw / fontSize));
+      drops = Array.from({ length: cols }, () => Math.floor((Math.random() * vh) / fontSize));
     };
     window.addEventListener("resize", onResize);
 
-    const t = setTimeout(() => setOn(false), 6500);
+    const t = setTimeout(() => setOn(false), 4200);
     return () => {
       clearTimeout(t);
       cancelAnimationFrame(raf);
@@ -103,11 +106,9 @@ export function KonamiMatrix() {
 
   if (!on) return null;
   return (
-    <div className="matrix-overlay" aria-hidden>
-      <canvas ref={cv} className="matrix-cv" />
-      <div className="matrix-toast">
-        modo hacker activado — <span className="spark">git push --chaos</span>
-      </div>
+    <div className="matrix-overlay" role="status">
+      <canvas ref={cv} className="matrix-cv" aria-hidden />
+      <div className="matrix-toast">encontraste la falla</div>
     </div>
   );
 }

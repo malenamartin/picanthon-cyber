@@ -26,7 +26,7 @@ export function SignupPaths() {
   if (!APPLY_OPEN) {
     return (
       <div className="paths">
-        <p className="mono-line">$ picanthon --join</p>
+        <p className="mono-line">$ picathon --join</p>
         <p className="paths-soon">// {APPLY_CLOSED_LABEL}.</p>
       </div>
     );
@@ -35,7 +35,7 @@ export function SignupPaths() {
   return (
     <div className="paths">
       <p className="mono-line" aria-hidden>
-        $ picanthon --join
+        $ picathon --join
       </p>
       <ul className="paths-list">
         {PATHS.map((p) => (

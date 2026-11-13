@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react";
 
-const WORD = "Picante";
 const GLYPHS = [".", ":", "-", "+", "*", "#"] as const;
 const ALPHAS = [0.38, 0.7, 1] as const;
 
@@ -10,7 +9,7 @@ type Cell = { g: number; a: number };
 
 // El recorte del pie se llena de caracteres que se van reemplazando. La
 // palabra hace de máscara, así que el movimiento queda adentro de las letras.
-export function FooterMark() {
+export function FooterMark({ word = "Picante" }: { word?: string }) {
   const rootRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -75,7 +74,7 @@ export function FooterMark() {
       ctx.textAlign = "center";
       ctx.textBaseline = "top";
       ctx.fillStyle = "#000";
-      ctx.fillText(WORD, w / 2, emTop);
+      ctx.fillText(word, w / 2, emTop);
       ctx.globalCompositeOperation = "source-over";
       ctx.letterSpacing = "0px";
     };
@@ -152,12 +151,12 @@ export function FooterMark() {
       io.disconnect();
       motion.removeEventListener("change", onMotion);
     };
-  }, []);
+  }, [word]);
 
   return (
     <div className="footer-mark" ref={rootRef} aria-hidden="true">
       <canvas ref={canvasRef} />
-      <span>Picante</span>
+      <span>{word}</span>
     </div>
   );
 }

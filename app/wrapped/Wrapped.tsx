@@ -124,7 +124,7 @@ export function Wrapped({ m }: { m: M }) {
     <div className="wr" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
       <header className="wr-top">
         <Logo />
-        <span className="wr-path">~/build-101 · wrapped</span>
+        <span className="wr-path">picante · wrapped</span>
         <span className="wr-live">
           <span className="wr-count">
             {String(index + 1).padStart(2, "0")}/{String(total).padStart(2, "0")}

@@ -2,6 +2,20 @@
 .eq-page {
   padding-bottom: 96px;
 }
+.eq-soon {
+  display: grid;
+  align-content: center;
+  gap: 28px;
+  min-height: calc(100svh - 220px);
+  padding: 48px 0 8px;
+}
+.eq-soon .footer-mark {
+  margin-top: 0;
+  height: 1.15em;
+  overflow: hidden;
+  font-size: 18vw;
+  line-height: 1;
+}
 .eq-crumb {
   color: var(--fg-body);
   text-decoration: underline;

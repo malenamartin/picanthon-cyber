@@ -74,7 +74,7 @@ export function Sponsors() {
       <div className="wrap">
         <Reveal>
           <p className="eyebrow">// nos acompañan</p>
-          <h2 className="h2">picanthon se construye en equipo.</h2>
+          <h2 className="h2">picathon se construye en equipo.</h2>
           <p className="lede">
             {tiers.length
               ? "Partners e instituciones para un sábado de ciberseguridad."

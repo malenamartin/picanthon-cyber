@@ -1,4 +1,4 @@
-// picanthon wrapped — forma de metrics.json. Lo escribe el script de ingesta
+// picathon wrapped — forma de metrics.json. Lo escribe el script de ingesta
 // (scripts/wrapped/metrics.ts) ya agregado y filtrado; la página /wrapped solo
 // lo lee. Nada de emails ni nombres de personas: solo equipos.
 

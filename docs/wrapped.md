@@ -1,4 +1,4 @@
-# picanthon wrapped
+# picathon wrapped
 
 El "Spotify Wrapped" de la hackathon: **`/wrapped`**, tarjetas que se pasan a mano. No está en el menú, ni en el sitemap, ni se indexa.
 

@@ -1,6 +1,6 @@
-# picanthon — sitio
+# picathon — sitio
 
-Landing de [Picanthon Cyberseguridad 2026](https://build101.dev): hackathon de ciberseguridad el sábado 12 de diciembre de 2026, de 9 a 21 hs, en las oficinas de Safe U en Buenos Aires. Organizan Safe U, Faraday, Talo Pay, Fardo, Picante y Build101.
+Landing de [Picathon Cyberseguridad 2026](https://build101.dev): hackathon de ciberseguridad el sábado 12 de diciembre de 2026, de 9 a 21 hs, en las oficinas de Safe U en Buenos Aires. Organizan Safe U, Faraday, Talo Pay, Fardo, Picante y Build101.
 
 ## Stack
 
@@ -24,7 +24,7 @@ Para probar el envío de inscripciones en local, copiá `.env.example` a `.env.l
 | qué | dónde |
 |---|---|
 | Fechas, horarios, sede, fecha límite, organizadores, LinkedIn, mails | `app/event.ts` (fuente única de verdad) |
-| Redes de picanthon (footer, schema `sameAs`, `/llms.txt`) | `SOCIALS` en `app/event.ts` |
+| Redes de picathon (footer, schema `sameAs`, `/llms.txt`) | `SOCIALS` en `app/event.ts` |
 | Abrir / cerrar inscripciones (en `false` se anuncia el cierre y se rechazan envíos) | `APPLY_OPEN` en `app/event.ts` |
 | Preguntas frecuentes (se usan también en el schema y `/llms.txt`) | `app/faqs.tsx` |
 | Sponsors por categoría y tamaño de cada logo | `app/components/Sponsors.tsx` + logos en `public/sponsors/` |
@@ -36,7 +36,7 @@ Para probar el envío de inscripciones en local, copiá `.env.example` a `.env.l
 
 - `/inscripcion` → elegir camino; `/inscripcion/equipo` (3 integrantes) y `/inscripcion/solo` (busca equipo).
 - Flujo: datos → revisar → enviado (o error, conservando los datos).
-- `POST /api/inscripcion` valida en el servidor (`lib/inscripcion.ts`) y escribe una fila en la Google Sheet **picanthon · Postulaciones** vía un web app de Apps Script.
+- `POST /api/inscripcion` valida en el servidor (`lib/inscripcion.ts`) y escribe una fila en la Google Sheet **picathon · Postulaciones** vía un web app de Apps Script.
 - Configuración paso a paso: [`docs/inscripciones-google-sheets.md`](docs/inscripciones-google-sheets.md).
 
 Variables de entorno (Vercel → Settings → Environment Variables):
@@ -46,7 +46,7 @@ GOOGLE_SHEETS_WEBHOOK_URL=      # URL /exec del web app de Apps Script
 GOOGLE_SHEETS_WEBHOOK_SECRET=   # el mismo valor que SHARED_SECRET en el script
 ```
 
-## picanthon wrapped
+## picathon wrapped
 
 `/wrapped` son las tarjetas con los números de la hackathon (fuera del menú y del sitemap; la landing lo anuncia con una cinta arriba). Los datos salen de `npm run metrics`, que lee los repos de los equipos y escribe `wrapped/metrics.json`; la página lo importa al compilar. Cómo correrlo: [`docs/wrapped.md`](docs/wrapped.md).
 

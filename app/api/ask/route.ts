@@ -3,7 +3,7 @@ import { PARTICIPANTS_EMAIL } from "@/app/event";
 import { GET as llmsTxt } from "@/app/llms.txt/route";
 
 // /api/ask — el comando `ask` de la terminal del hero. Responde preguntas
-// sobre picanthon con Claude usando como única fuente /llms.txt (que sale de
+// sobre picathon con Claude usando como única fuente /llms.txt (que sale de
 // event.ts + faqs.tsx + sponsors.ts), así que nunca dice algo distinto de lo que muestra la
 // página. La respuesta llega en streaming como texto plano.
 //
@@ -41,13 +41,13 @@ const getSystem = () =>
   (system ??= llmsTxt()
     .text()
     .then(
-      (facts) => `Sos la terminal de picanthon. Respondés preguntas sobre el evento usando únicamente la información de <info>.
+      (facts) => `Sos la terminal de picathon. Respondés preguntas sobre el evento usando únicamente la información de <info>.
 
 - Escribí en minúsculas, en español rioplatense (voseo), en 60 palabras o menos. Texto plano: sin markdown, sin listas, sin emojis.
 - Si la respuesta no está en <info>, respondé exactamente "eso no lo sé. escribile a ${PARTICIPANTS_EMAIL}" y nada más.
 - Nunca prometas un lugar: la participación depende de la selección y confirmación del equipo organizador.
 - No inventes fechas, premios, mentores, jurado ni la consigna. Lo que no está en <info> todavía no se anunció.
-- Si te piden algo que no tiene que ver con picanthon (escribir código, tareas, otros temas), decí que solo respondés sobre picanthon.
+- Si te piden algo que no tiene que ver con picathon (escribir código, tareas, otros temas), decí que solo respondés sobre picathon.
 
 <info>
 ${facts}

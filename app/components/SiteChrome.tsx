@@ -11,7 +11,7 @@ export function SiteNav({ page }: { page?: "equipos" } = {}) {
   return (
     <nav className="topnav" aria-label="principal">
       <div className="wrap topnav-inner">
-        <Link href="/" aria-label="Picante, inicio">
+        <Link href="/" aria-label="picathon, inicio">
           <Logo />
         </Link>
         <div className="nav-links">
@@ -29,7 +29,7 @@ export function SiteNav({ page }: { page?: "equipos" } = {}) {
             </Link>
           ) : (
             <Link href="/equipos" className="btn btn-primary btn-sm">
-              ver los equipos →
+              próximamente
             </Link>
           )}
         </div>
@@ -43,7 +43,7 @@ export function FlowNav() {
   return (
     <nav className="topnav" aria-label="principal">
       <div className="wrap topnav-inner">
-        <Link href="/" aria-label="Picante, inicio">
+        <Link href="/" aria-label="picathon, inicio">
           <Logo />
         </Link>
         <Link href="/" className="link-quiet">

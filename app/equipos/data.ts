@@ -1,6 +1,6 @@
 import equipos from "./equipos.json";
 
-// Catálogo de equipos y builders de picanthon. Los datos salen de la nómina de
+// Catálogo de equipos y builders de picathon. Los datos salen de la nómina de
 // acreditaciones (equipos e integrantes), de las postulaciones (estudio,
 // trabajo y LinkedIn, con el consentimiento de cada uno) y de los repos (qué
 // construyeron, demo y captura). Se editan a mano en equipos.json.

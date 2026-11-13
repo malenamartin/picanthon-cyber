@@ -75,7 +75,7 @@ const structuredData = {
         "@type": "Country",
         name: "Argentina",
       },
-      // la prensa es sobre picanthon (no solo la hackathon): cuelga de la organización
+      // la prensa es sobre picathon (no solo la hackathon): cuelga de la organización
       subjectOf: PRESS.map((p) => ({
         "@type": "NewsArticle",
         headline: p.title,
@@ -127,7 +127,7 @@ const structuredData = {
       eventStatus: "https://schema.org/EventScheduled",
       inLanguage: "es-AR",
       keywords:
-        "picanthon, hackathon ciberseguridad, hackathon buenos aires, ciberseguridad, safe u",
+        "picathon, hackathon ciberseguridad, hackathon buenos aires, ciberseguridad, safe u",
       location: {
         "@type": "Place",
         name: VENUE,

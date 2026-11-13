@@ -30,8 +30,8 @@ const organizerList = `${organizerNames.slice(0, -1).join(", ")} y ${organizerNa
 
 export const FAQS: FaqItem[] = [
   {
-    q: "qué es picanthon?",
-    aText: `Picanthon Cyberseguridad 2026 es la hackathon de ciberseguridad. un sábado presencial para hallar fallas, construir la defensa y mostrarla en vivo. organizan ${organizerList}.`,
+    q: "qué es picathon?",
+    aText: `Picathon Cyberseguridad 2026 es la hackathon de ciberseguridad. un sábado presencial para hallar fallas, construir la defensa y mostrarla en vivo. organizan ${organizerList}.`,
   },
   {
     q: "cuándo y dónde?",

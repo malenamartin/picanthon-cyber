@@ -15,7 +15,7 @@ type Line =
   | { k: "quote" };
 
 const SCRIPT: Line[] = [
-  { k: "cmd", text: APPLY_OPEN ? "picanthon --join" : "picanthon --status" },
+  { k: "cmd", text: APPLY_OPEN ? "picathon --join" : "picathon --status" },
   { k: "blank" },
   ...(APPLY_OPEN
     ? ([
@@ -27,6 +27,8 @@ const SCRIPT: Line[] = [
         { k: "step", n: "01", text: "hackathon de ciberseguridad" },
         { k: "step", n: "02", text: "hallazgos que se pueden mostrar" },
         { k: "step", n: "03", text: "un sábado, de 9 a 21 hs" },
+        { k: "blank" },
+        { k: "comment", text: "picathon --break encuentra una falla" },
       ] as const)),
 ];
 
@@ -175,6 +177,7 @@ function runCommand(
           <span className="accent">consigna</span> ·{" "}
           <span className="accent">sponsors</span> ·{" "}
           <span className="accent">inscribite</span> ·{" "}
+          <span className="accent">picathon --break</span> ·{" "}
           <span className="accent">whoami</span> ·{" "}
           <span className="accent">cafe</span> ·{" "}
           <span className="accent">clear</span>
@@ -205,7 +208,7 @@ function runCommand(
   if (lower === "cat readme" || lower === "cat readme.md")
     return {
       out: [
-        <div className="md-h" key="h"># picanthon</div>,
+        <div className="md-h" key="h"># picathon</div>,
         <div className="out" key="1">la hackathon de ciberseguridad. un sábado, de 9 a 21 hs, para hallar</div>,
         <div className="out" key="2">fallas, construir la defensa y mostrarla en vivo.</div>,
       ],
@@ -250,8 +253,8 @@ function runCommand(
     return { out: O(<div className="out">{new Date().toString().toLowerCase()}</div>) };
   if (lower === "matrix")
     return { out: O(<div className="ok">entrando a la matrix…</div>), action: "matrix" };
-  if (lower === "crash" || lower === "throw" || lower.startsWith("throw "))
-    return { out: O(<div className="del-text">lanzando excepción no controlada…</div>), action: "crash" };
+  if (lower === "picathon --break" || lower === "crash" || lower === "throw" || lower.startsWith("throw "))
+    return { out: O(<div className="del-text">encontraste una falla…</div>), action: "crash" };
   if (lower === "clear" || lower === "cls") return { out: [], action: "clear" };
   if (lower.startsWith("echo "))
     return { out: O(<div className="out">{cmd.slice(5)}</div>) };
@@ -407,7 +410,7 @@ export function Terminal({ footer }: { footer?: ReactNode }) {
 
   return (
     <div ref={ref}>
-      <WindowChrome title={APPLY_OPEN ? "~/build-101 · admisiones" : "~/build-101 · edición 01"}>
+      <WindowChrome title="~/picathon">
         <div
           className="win-body term-body"
           ref={bodyRef}

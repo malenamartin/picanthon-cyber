@@ -35,14 +35,14 @@ export function GET() {
 
 - qué: ${EVENT_NAME}, hackathon de ciberseguridad presencial en Buenos Aires. El sábado se buscan fallas, se construye una defensa y se muestra en vivo.
 - edición: ${EVENT_DATES_LONG}, con ${TEAMS_TOTAL} equipos. las novedades salen primero en redes.
-- equipos y proyectos: ${CANONICAL_URL}equipos
+- anuncio de los equipos: ${CANONICAL_URL}equipos
 - dónde: ${VENUE}, ${VENUE_ADDRESS}, Argentina.
 - precio: gratis, con cupos limitados y selección del equipo organizador.
 - equipos: ${TEAM_SIZE} personas${APPLY_OPEN ? "; podés inscribir a tu equipo o inscribirte solo y te ayudamos a formar uno." : "."}
 - horario: ${SCHEDULE.map((d) => `${d.day} de ${d.hours}`).join(" y ")}; la sede cierra a las 21 hs.
 ${
     APPLY_OPEN
-      ? `- cierre de inscripción: ${APPLY_DEADLINE_FULL} (hora de uruguay).
+      ? `- cierre de inscripción: ${APPLY_DEADLINE_FULL} (hora de Buenos Aires).
 - inscripción: ${APPLY_URL}`
       : `- inscripción: ${APPLY_CLOSED_MESSAGE}`
   }

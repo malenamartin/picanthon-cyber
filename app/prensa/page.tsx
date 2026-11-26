@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "../page-metadata";
 import Link from "next/link";
 import { SiteFooter, SiteNav } from "../components/SiteChrome";
 import { PressCards } from "../components/Press";
@@ -9,18 +9,17 @@ const PRESS_CONTACT = TEAM.find((p) => p.email === PRESS_EMAIL)!;
 
 // A diferencia de /equipos, esta sí se indexa y va al sitemap: no tiene datos
 // personales y suma cobertura para buscadores.
-export const metadata: Metadata = {
-  title: "prensa · picathon",
-  description:
-    "Lo que publicaron los medios sobre picathon: notas, crónicas y contacto para prensa.",
-  alternates: { canonical: "/prensa" },
-};
+export const metadata = pageMetadata(
+  "/prensa",
+  "Picathon en la prensa | Notas y contacto",
+  "Leé la cobertura de Forbes Uruguay sobre Picante y la Picathon. Contactá al equipo de prensa para entrevistas, fotos y datos del evento.",
+);
 
 export default function PrensaPage() {
   return (
     <>
       <SiteNav />
-      <main className="press-page">
+      <main id="contenido" tabIndex={-1} className="press-page">
         <div className="wrap">
           <header className="press-hero">
             <p className="eyebrow">

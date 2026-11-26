@@ -119,14 +119,16 @@ export function FooterMark({ word = "Picante" }: { word?: string }) {
     const start = () => {
       cancelAnimationFrame(raf);
       if (!onScreen || motion.matches) return;
+      rebuild();
       last = 0;
       raf = requestAnimationFrame(frame);
     };
 
     syncLive();
-    rebuild();
 
-    const ro = new ResizeObserver(() => rebuild());
+    const ro = new ResizeObserver(() => {
+      if (onScreen && !motion.matches) rebuild();
+    });
     ro.observe(root);
     const io = new IntersectionObserver(
       ([entry]) => {

@@ -49,7 +49,7 @@ export function Wrapped({ m }: { m: M }) {
 
   useEffect(() => {
     const start = Number(new URLSearchParams(window.location.search).get("card"));
-    if (start > 0) setI(start - 1);
+    if (Number.isSafeInteger(start) && start > 0) setI(start - 1);
   }, []);
 
   const slides = useMemo(() => buildSlides(m), [m]);
@@ -84,7 +84,8 @@ export function Wrapped({ m }: { m: M }) {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.altKey) return;
+      if (e.key === " " && e.target instanceof Element && e.target.closest("button, a, input")) return;
       if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") {
         e.preventDefault();
         go(1);
@@ -132,7 +133,7 @@ export function Wrapped({ m }: { m: M }) {
         </span>
       </header>
 
-      <main className="wr-stage">
+      <main id="contenido" tabIndex={-1} className="wr-stage">
         <section key={`${slide.id}-${index}`} className={`wr-card ${leaving ? "out" : ""}`} aria-live="polite">
           <slide.Card m={m} idx={cardNumber} />
         </section>

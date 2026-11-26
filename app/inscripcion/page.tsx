@@ -1,10 +1,6 @@
-import type { Metadata } from "next";
+import Link from "next/link";
 import { SignupPaths } from "../components/SignupPaths";
-import { APPLY_CLOSED_MESSAGE, APPLY_DEADLINE_FULL, APPLY_OPEN, APPLY_URL, PARTICIPANTS_EMAIL } from "../event";
-
-export const metadata: Metadata = {
-  alternates: { canonical: APPLY_URL },
-};
+import { APPLY_DEADLINE_FULL, APPLY_OPEN, PARTICIPANTS_EMAIL } from "../event";
 
 export default function InscripcionPage() {
   return (
@@ -15,11 +11,13 @@ export default function InscripcionPage() {
         <p className="flow-intro">
           {APPLY_OPEN
             ? `Fecha límite: ${APPLY_DEADLINE_FULL}. Elegí cómo venís: con equipo o buscando uno.`
-            : APPLY_CLOSED_MESSAGE}
+            : "Si ya te postulaste y tenés dudas sobre tu inscripción, podés escribirle a Ramiro."}
         </p>
       </div>
       <div className="flow-main">
-        <SignupPaths />
+        {APPLY_OPEN ? <SignupPaths /> : (
+          <Link href="/#evento" className="btn btn-primary">ver el programa →</Link>
+        )}
       </div>
       <div className="flow-aside">
         <p>¿Tenés alguna duda?</p>

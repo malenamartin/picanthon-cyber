@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { reducedMotion } from "./useInView";
 
 // 5×7. El acento de Á/É se dibuja una fila arriba de la letra.
 const FONT: Record<string, string> = {
@@ -66,8 +65,8 @@ export function DotPhrase() {
 
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let raf = 0;
-    let alive = true;
-    let onScreen = true;
+    let timer = 0;
+    let onScreen = false;
     let start = performance.now();
 
     const paint = (now: number) => {
@@ -169,35 +168,45 @@ export function DotPhrase() {
       }
     };
 
-    const frame = (now: number) => {
-      if (!alive) return;
-      paint(now);
-      if (!motion.matches && onScreen) raf = requestAnimationFrame(frame);
+    const stop = () => {
+      cancelAnimationFrame(raf);
+      window.clearTimeout(timer);
     };
+    const frame = (now: number) => {
+      if (!onScreen || document.hidden) return;
+      paint(now);
+      if (motion.matches) return;
 
+      // Durante la pausa el dibujo no cambia. El ruido usa pasos de 70 ms.
+      const local = ((now - start) / 1000) % BEAT;
+      const wait = local >= SCRAMBLE && local < SCRAMBLE + HOLD
+        ? (SCRAMBLE + HOLD - local) * 1000
+        : 70;
+      timer = window.setTimeout(() => { raf = requestAnimationFrame(frame); }, wait);
+    };
+    const refresh = () => {
+      stop();
+      if (onScreen && !document.hidden) raf = requestAnimationFrame(frame);
+    };
     const io = new IntersectionObserver(([entry]) => {
       onScreen = entry.isIntersecting;
-      if (onScreen && !motion.matches) {
-        cancelAnimationFrame(raf);
-        raf = requestAnimationFrame(frame);
-      } else {
-        cancelAnimationFrame(raf);
-      }
+      refresh();
     });
+    const ro = new ResizeObserver(refresh);
     io.observe(canvas);
-    raf = requestAnimationFrame(frame);
-
+    ro.observe(canvas);
     const onMotion = () => {
-      cancelAnimationFrame(raf);
       start = performance.now();
-      raf = requestAnimationFrame(frame);
+      refresh();
     };
     motion.addEventListener("change", onMotion);
+    document.addEventListener("visibilitychange", refresh);
 
     return () => {
-      alive = false;
-      cancelAnimationFrame(raf);
+      stop();
       io.disconnect();
+      ro.disconnect();
+      document.removeEventListener("visibilitychange", refresh);
       motion.removeEventListener("change", onMotion);
     };
   }, []);

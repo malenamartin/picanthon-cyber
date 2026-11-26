@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRef } from "react";
 
 const HOURS = [
@@ -45,12 +46,10 @@ export function DayDial({
   value,
   onChange,
   onHold,
-  reduced,
 }: {
   value: number;
   onChange: (value: number) => void;
   onHold: (holding: boolean) => void;
-  reduced: boolean;
 }) {
   const trackRef = useRef<HTMLDivElement>(null);
   const hour = hourFromValue(value);
@@ -59,28 +58,27 @@ export function DayDial({
 
   const fromPointer = (clientX: number) => {
     const track = trackRef.current;
-    if (!track || reduced) return;
+    if (!track) return;
     const rect = track.getBoundingClientRect();
     const span = Math.max(rect.width, 1);
     onChange(clamp01((clientX - rect.left) / span));
   };
 
   return (
-    <div className="day-dial" style={{ ["--p" as string]: reduced ? 0.5 : value }}>
+    <div className="day-dial" style={{ ["--p" as string]: value }}>
       <div className="day-dome" aria-hidden>
-        <img className="day-chili" src="/picante-chili.png" alt="" width={338} height={336} />
+        <Image sizes="140px" className="day-chili" src="/picante-chili.png" alt="" width={338} height={336} />
       </div>
 
       <p className="day-readout">
         <span className="label">{String(hour).padStart(2, "0")} hs</span>
-        <span className="day-readout-title">{DAY_STOPS[reduced ? 1 : stop].title}</span>
+        <span className="day-readout-title">{DAY_STOPS[stop].title}</span>
       </p>
 
       <div
         className="day-track"
         ref={trackRef}
         onPointerDown={(event) => {
-          if (reduced) return;
           onHold(true);
           event.currentTarget.setPointerCapture(event.pointerId);
           fromPointer(event.clientX);
@@ -108,10 +106,7 @@ export function DayDial({
           aria-valuemax={21}
           aria-valuenow={hour}
           aria-valuetext={readout}
-          aria-disabled={reduced || undefined}
-          disabled={reduced}
           onKeyDown={(event) => {
-            if (reduced) return;
             const step = 1 / 12;
             if (event.key === "ArrowRight" || event.key === "ArrowUp") {
               event.preventDefault();
@@ -135,9 +130,8 @@ export function DayDial({
           <button
             key={item.label}
             type="button"
-            className={`day-hour${stop === index && !reduced ? " is-on" : ""}`}
-            aria-pressed={stop === index && !reduced}
-            disabled={reduced}
+            className={`day-hour${stop === index ? " is-on" : ""}`}
+            aria-pressed={stop === index}
             onClick={() => onChange(item.at)}
           >
             {item.label}

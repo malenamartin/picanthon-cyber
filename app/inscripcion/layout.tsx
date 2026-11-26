@@ -1,19 +1,20 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "../page-metadata";
 import { FlowNav } from "../components/SiteChrome";
-import { APPLY_CLOSED_MESSAGE, APPLY_OPEN } from "../event";
+import { APPLY_OPEN } from "../event";
 
-export const metadata: Metadata = {
-  title: "inscripción · picathon",
-  description: APPLY_OPEN
-    ? "inscribite a picathon, la hackathon de IA más grande de uruguay: con tu equipo de 3 o solo, y te ayudamos a encontrar con quién construir."
-    : APPLY_CLOSED_MESSAGE,
-};
+export const metadata = pageMetadata(
+  "/inscripcion",
+  "Inscripción | Picathon Cyberseguridad 2026",
+  APPLY_OPEN
+    ? "Inscribite a la hackathon de ciberseguridad en Buenos Aires. Vení con tu equipo de tres o anotate por tu cuenta."
+    : "Las inscripciones a Picathon Cyberseguridad 2026 en Buenos Aires están cerradas. Consultá al equipo organizador si tenés dudas sobre tu postulación.",
+);
 
 export default function InscripcionLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <FlowNav />
-      <main className="flow-page">{children}</main>
+      <main id="contenido" tabIndex={-1} className="flow-page">{children}</main>
     </>
   );
 }

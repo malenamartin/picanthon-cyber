@@ -1,12 +1,14 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "../page-metadata";
 import "./wrapped.css";
 
 // /wrapped: las tarjetas de la hackathon. Fuera del menú, del sitemap y de
 // los buscadores.
-export const metadata: Metadata = {
-  title: "wrapped · picathon",
-  description: "picathon wrapped: los números de la hackathon.",
-  alternates: { canonical: "/wrapped" },
+export const metadata = {
+  ...pageMetadata(
+    "/wrapped",
+    "Picathon Wrapped | La hackathon en números",
+    "Recorré el trabajo de los equipos durante la hackathon, tarjeta por tarjeta.",
+  ),
   robots: { index: false, follow: false },
 };
 

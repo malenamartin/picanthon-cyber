@@ -12,9 +12,10 @@ export function FakeCrash() {
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
 
   useEffect(() => {
+    if (phase !== "fixing") return;
     const id = setInterval(() => setFrame((f) => f + 1), 80);
     return () => clearInterval(id);
-  }, []);
+  }, [phase]);
 
   const close = () => {
     timers.current.forEach(clearTimeout);

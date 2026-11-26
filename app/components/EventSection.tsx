@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { Terminal } from "./Terminal";
 import { PixelBlocks, PIXELS_HERO } from "./PixelBlocks";
 import { DayDial, DAY_STOPS, activeStop } from "./DayDial";
-import { reducedMotion } from "./useInView";
 
 export function EventSection() {
   const stageRef = useRef<HTMLDivElement>(null);
@@ -14,19 +13,14 @@ export function EventSection() {
   const [reduced, setReduced] = useState(false);
 
   useEffect(() => {
-    const still = reducedMotion();
-    setReduced(still);
-    if (still) {
-      setValue(0.5);
-      return;
-    }
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const stage = stageRef.current;
     if (!stage) return;
 
     let frame = 0;
     const update = () => {
       frame = 0;
-      if (holding.current) return;
+      if (motion.matches || holding.current) return;
       if (anchor.current !== null && Math.abs(window.scrollY - anchor.current) < 32) return;
       anchor.current = null;
       const rect = stage.getBoundingClientRect();
@@ -42,10 +36,17 @@ export function EventSection() {
       if (frame) return;
       frame = requestAnimationFrame(update);
     };
-    update();
+    const syncMotion = () => {
+      setReduced(motion.matches);
+      if (!motion.matches) onScroll();
+    };
+    const first = requestAnimationFrame(syncMotion);
+    motion.addEventListener("change", syncMotion);
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
     return () => {
+      motion.removeEventListener("change", syncMotion);
+      cancelAnimationFrame(first);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
       if (frame) cancelAnimationFrame(frame);
@@ -57,7 +58,7 @@ export function EventSection() {
   return (
     <section id="evento" className="section">
       <div className="wrap">
-        <p className="eyebrow">// el sábado</p>
+        <p className="eyebrow">// programa del sábado</p>
         <div ref={stageRef} className={`event-stage${reduced ? " is-still" : ""}`}>
           <h2 className="h2 event-title">
             un día para encontrar
@@ -74,7 +75,6 @@ export function EventSection() {
               />
               <DayDial
                 value={value}
-                reduced={reduced}
                 onHold={(next) => {
                   holding.current = next;
                 }}
@@ -95,17 +95,6 @@ export function EventSection() {
             ))}
           </ol>
         </div>
-        <ol className="steps cells">
-          {DAY_STOPS.map((stop, index) => (
-            <li key={stop.hour}>
-              <div className={`step${active === index ? " is-on" : ""}`}>
-                <span className="step-n">{stop.hour}</span>
-                <h3 className="h3">{stop.title}</h3>
-                <p>{stop.body}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
         <div className="event-terminal">
           <p className="eyebrow">preguntale</p>
           <Terminal />

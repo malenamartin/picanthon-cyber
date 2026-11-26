@@ -14,7 +14,7 @@ export default function NotFound() {
   return (
     <>
       <FlowNav />
-      <main className="wrap nf">
+      <main id="contenido" tabIndex={-1} className="wrap nf">
         <div className="nf-frame">
           <PixelBlocks id="px-404" cells={PIXELS_SMALL} cols={4} rows={4} className="nf-pixels" />
           <p className="mono-line">$ cd esta-pagina</p>

@@ -1,8 +1,14 @@
+import Image from "next/image";
+import Link from "next/link";
 import { DotPhrase } from "./DotPhrase";
 import { IkTrace } from "./IkTrace";
 import { Countdown } from "./Countdown";
 import {
+  APPLY_CLOSED_LABEL,
+  APPLY_OPEN,
+  APPLY_PATH,
   EVENT_DATES,
+  EVENT_NAME,
   EVENT_HOURS,
   EVENT_START_DATE,
   ORGANIZERS,
@@ -14,24 +20,23 @@ export function Hero() {
   return (
     <header className="hero" id="top">
       <div className="wrap">
-        <div className="hero-frame rise">
+        <div className="hero-frame">
           <IkTrace />
           <div className="hero-copy">
-            <p className="eyebrow">picathon · ciberseguridad · buenos aires</p>
-            <h1 className="hero-title">
-              encontramos
-              <br />
-              lo que falla.
-              <br />
-              el sábado.
-            </h1>
+            <p className="eyebrow">hackathon · {VENUE_LOCALITY}</p>
+            <h1 className="hero-title">{EVENT_NAME}</h1>
             <p className="hero-lede">
-              Un sábado, de 9 a 21 hs, para hallar fallas, construir la defensa y mostrarla en vivo.
+              El <time dateTime={EVENT_START_DATE}>{EVENT_DATES}</time>, de {EVENT_HOURS}, nos encontramos en {VENUE} para construir y mostrar defensas en vivo.
             </p>
             <div className="hero-cta">
               <a href="#evento" className="btn btn-primary">
-                ver el sábado <span className="arr">→</span>
+                ver el programa <span className="arr" aria-hidden>→</span>
               </a>
+              {APPLY_OPEN ? (
+                <Link href={APPLY_PATH} className="link-strong">inscribite</Link>
+              ) : (
+                <Link href={APPLY_PATH} prefetch={false} className="link-quiet">{APPLY_CLOSED_LABEL}</Link>
+              )}
             </div>
           </div>
           <div className="hero-side">
@@ -70,24 +75,21 @@ export function Hero() {
                     <a href={org.url} target="_blank" rel="noopener noreferrer" className="coorg-name">
                       {org.name === "Picante" ? (
                         /* eslint-disable-next-line @next/next/no-img-element */
-                        <img className="logo-picante" src="/picante-wordmark.png" alt="Picante" width={822} height={167} />
+                        <img loading="lazy" className="logo-picante" src="/picante-wordmark.png" alt="Picante" width={822} height={167} />
                       ) : org.name === "Faraday" ? (
                         /* eslint-disable-next-line @next/next/no-img-element */
                         <img className="logo-faraday" src="/faraday-logo.png" alt="Faraday" width={125} height={26} />
                       ) : org.name === "Fardo" ? (
-                        /* eslint-disable-next-line @next/next/no-img-element */
-                        <img className="logo-fardo" src="/fardo-logo.png" alt="Fardo" width={616} height={206} />
+                        <Image loading="lazy" sizes="60px" className="logo-fardo" src="/fardo-logo.png" alt="Fardo" width={616} height={206} />
                       ) : org.name === "Build101" ? (
-                        /* eslint-disable-next-line @next/next/no-img-element */
-                        <img className="logo-b101" src="/build101-logo.png" alt="Build101" width={1024} height={153} />
+                        <Image loading="lazy" sizes="108px" className="logo-b101" src="/build101-logo.png" alt="Build101" width={1024} height={153} />
                       ) : (
                         org.name
                       )}
                     </a>
                   ) : (
                     <span className="coorg-name">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img className="logo-safeu" src="/safeu-logo.png" alt={org.name} width={625} height={99} />
+                      <Image loading="lazy" sizes="139px" className="logo-safeu" src="/safeu-logo.png" alt={org.name} width={625} height={99} />
                     </span>
                   )}
                 </li>

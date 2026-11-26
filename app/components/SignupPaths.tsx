@@ -1,3 +1,4 @@
+import { PointerSpot } from "./PointerSpot";
 import Link from "next/link";
 import { ViewTransition } from "react";
 import { APPLY_CLOSED_LABEL, APPLY_OPEN, APPLY_PATH } from "../event";
@@ -37,6 +38,7 @@ export function SignupPaths() {
       <p className="mono-line" aria-hidden>
         $ picathon --join
       </p>
+      <PointerSpot />
       <ul className="paths-list">
         {PATHS.map((p) => (
           <li key={p.href}>

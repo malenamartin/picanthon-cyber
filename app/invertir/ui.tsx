@@ -49,7 +49,7 @@ export function InvestmentShell({ children }: { children: React.ReactNode }) {
       <Link href="/invertir/resultados" className={results ? "active" : ""} aria-current={results ? "page" : undefined}><Icon name="chart" size={17} /> resultados <span className="iv-tab-dot" /></Link>
       <span className="iv-tabs-note">CAPITAL FICTICIO. IDEAS REALES.</span>
     </nav></div>
-    <main className="wrap iv-main">{children}</main>
+    <main id="contenido" tabIndex={-1} className="wrap iv-main">{children}</main>
     <footer className="wrap iv-footer"><span>picathon <span className="iv-dim">/</span> la ronda</span><span>build. ship. invest.</span><span>MONTEVIDEO, 2026 <span className="iv-blue">↗</span></span></footer>
   </div>;
 }

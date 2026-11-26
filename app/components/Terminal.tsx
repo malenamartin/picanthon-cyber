@@ -293,11 +293,12 @@ export function Terminal({ footer }: { footer?: ReactNode }) {
   const inputRef = useRef<HTMLInputElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
 
-  // spinner ticker
+  const spinning = active?.spinning;
   useEffect(() => {
+    if (!spinning) return;
     const id = setInterval(() => setFrame((f) => f + 1), 80);
     return () => clearInterval(id);
-  }, []);
+  }, [spinning]);
 
   useEffect(() => {
     if (!inView || started.current) return;

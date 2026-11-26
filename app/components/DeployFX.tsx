@@ -29,11 +29,13 @@ export function DeployFX() {
   const busy = useRef(false);
 
   useEffect(() => {
+    if (!open) return;
     const id = setInterval(() => setFrame((f) => f + 1), 80);
     return () => clearInterval(id);
-  }, []);
+  }, [open]);
 
   useEffect(() => {
+    const timers: ReturnType<typeof setTimeout>[] = [];
     const onDeploy = () => {
       if (busy.current) return;
       busy.current = true;
@@ -46,7 +48,7 @@ export function DeployFX() {
 
       setStep(0);
       setOpen(true);
-      const timers: ReturnType<typeof setTimeout>[] = [];
+      timers.length = 0;
       let acc = 0;
       STEPS.forEach((s, i) => {
         acc += s.ms;
@@ -68,7 +70,10 @@ export function DeployFX() {
       );
     };
     window.addEventListener("uru:deploy", onDeploy);
-    return () => window.removeEventListener("uru:deploy", onDeploy);
+    return () => {
+      window.removeEventListener("uru:deploy", onDeploy);
+      timers.forEach(clearTimeout);
+    };
   }, []);
 
   if (!open) return null;

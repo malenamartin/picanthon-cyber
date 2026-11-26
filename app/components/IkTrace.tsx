@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { reducedMotion } from "./useInView";
 
 const JOINTS = 7;
 
@@ -42,7 +41,7 @@ export function IkTrace() {
     const ctx = cv?.getContext("2d");
     if (!cv || !host || !ctx) return;
 
-    const still = reducedMotion();
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const points = Array.from({ length: JOINTS }, () => ({ x: 0, y: 0 }));
     const lengths = Array.from({ length: JOINTS - 1 }, () => 0);
     const base = { x: 0, y: 0 };
@@ -121,35 +120,34 @@ export function IkTrace() {
     };
 
     const tick = () => {
-      target.x += (aim.x - target.x) * 0.18;
-      target.y += (aim.y - target.y) * 0.18;
+      raf = 0;
+      const moving = Math.hypot(aim.x - target.x, aim.y - target.y) > 0.25;
+      target.x = moving ? target.x + (aim.x - target.x) * 0.18 : aim.x;
+      target.y = moving ? target.y + (aim.y - target.y) * 0.18 : aim.y;
       reach(points, base, target, lengths);
       draw();
-      raf = requestAnimationFrame(tick);
+      if (moving) raf = requestAnimationFrame(tick);
     };
 
     const play = () => {
-      cancelAnimationFrame(raf);
-      if (still || !visible) {
-        reach(points, base, target, lengths);
-        draw();
-        return;
-      }
-      raf = requestAnimationFrame(tick);
+      if (!raf && visible && !motion.matches) raf = requestAnimationFrame(tick);
     };
 
     const onMove = (event: PointerEvent) => {
+      if (motion.matches || !visible) return;
       const rect = cv.getBoundingClientRect();
       const lane = band();
       inside = true;
       aim.x = event.clientX - rect.left;
       const y = event.clientY - rect.top;
       aim.y = Math.min(lane.y1, Math.max(lane.y0, y));
+      play();
     };
     const onLeave = () => {
       inside = false;
       aim.x = cv.clientWidth * 0.78;
       aim.y = restY();
+      play();
     };
 
     host.addEventListener("pointermove", onMove as EventListener);
@@ -161,15 +159,27 @@ export function IkTrace() {
     const io = new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting;
       if (visible) play();
-      else cancelAnimationFrame(raf);
+      else {
+        cancelAnimationFrame(raf);
+        raf = 0;
+      }
     });
-    layout();
+    const reset = () => {
+      cancelAnimationFrame(raf);
+      raf = 0;
+      inside = false;
+      layout();
+      draw();
+    };
+    motion.addEventListener("change", reset);
+    reset();
     ro.observe(cv);
     io.observe(cv);
     play();
 
     return () => {
       cancelAnimationFrame(raf);
+      motion.removeEventListener("change", reset);
       ro.disconnect();
       io.disconnect();
       host.removeEventListener("pointermove", onMove as EventListener);

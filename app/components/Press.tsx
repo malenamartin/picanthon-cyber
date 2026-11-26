@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "./Reveal";
 import { PixelBlocks, PIXELS_SMALL } from "./PixelBlocks";
@@ -20,11 +21,13 @@ export function PressCards({ full = false }: { full?: boolean }) {
 }
 
 function PressCard({ item: p, full }: { item: PressItem; full: boolean }) {
+  const Heading = full ? "h2" : "h3";
   return (
     <a className="press-card" href={p.url} target="_blank" rel="noopener noreferrer">
       <div className="press-photo halftone">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={p.image} alt="" width={1200} height={675} loading="lazy" />
+        <Image src={p.image} alt="" width={1200} height={675}
+          sizes="(max-width: 1296px) calc(100vw - 48px), 1248px"
+          loading={full ? "eager" : "lazy"} />
         <PixelBlocks id={`px-press-${p.key}`} cells={PIXELS_SMALL} cols={4} rows={4} className="press-pixels" />
       </div>
       <div className="press-body">
@@ -32,7 +35,7 @@ function PressCard({ item: p, full }: { item: PressItem; full: boolean }) {
           <span className="label-strong">{p.outlet}</span> · {p.kind} ·{" "}
           <time dateTime={p.date}>{formatPressDate(p.date)}</time>
         </p>
-        <h3 className="press-title">{p.title}</h3>
+        <Heading className="press-title">{p.title}</Heading>
         {full && p.dek ? <p className="press-dek">{p.dek}</p> : null}
         {p.coorg ? <span className="badge press-coorg">coorganizador de picathon</span> : null}
         <span className="press-cta label">

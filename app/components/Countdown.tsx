@@ -13,7 +13,7 @@ const pad = (n: number) => String(n).padStart(2, "0");
 function target(now: number): { label: string; at: number | null } {
   if (APPLY_OPEN && now < DEADLINE) return { label: "cierran las inscripciones", at: DEADLINE };
   if (now < KICKOFF) return { label: "arranca picathon", at: KICKOFF };
-  return { label: "próxima edición", at: null };
+  return { label: now < END ? "picathon en curso" : "próxima edición", at: null };
 }
 
 function parts(ms: number) {
@@ -55,7 +55,7 @@ export function Countdown() {
   const word = t.at === null ? (live ? "en vivo" : "pronto") : null;
 
   return (
-    <div className="kickoff" aria-live="polite">
+    <div className="kickoff" role="timer" aria-label="Cuenta regresiva de Picathon">
       <p className="kickoff-label">{label}</p>
       {units ? (
         <ol className="kickoff-units">

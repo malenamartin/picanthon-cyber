@@ -11,15 +11,16 @@ export function SiteNav({ page }: { page?: "equipos" } = {}) {
   return (
     <nav className="topnav" aria-label="principal">
       <div className="wrap topnav-inner">
-        <Link href="/" aria-label="picathon, inicio">
+        <Link href="/" prefetch={false} aria-label="Picante · inicio de Picathon">
           <Logo />
         </Link>
         <div className="nav-links">
-          <Link href="/#evento">el evento</Link>
-          <Link href="/#recap">after movie</Link>
-          <Link href="/#sponsors">sponsors</Link>
-          <Link href="/prensa">prensa</Link>
-          <Link href="/#contacto">contacto</Link>
+          <Link href="/#evento" prefetch={false}>programa</Link>
+          <Link href="/#recap" prefetch={false}>video</Link>
+          <Link href="/#sponsors" prefetch={false}>sponsors</Link>
+          <Link href="/prensa" prefetch={false}>prensa</Link>
+          <Link href="/#faq" prefetch={false}>FAQ</Link>
+          <Link href="/#contacto" prefetch={false}>contacto</Link>
         </div>
         <div className="topnav-end">
           <NavSocials />
@@ -28,8 +29,8 @@ export function SiteNav({ page }: { page?: "equipos" } = {}) {
               ← volver al sitio
             </Link>
           ) : (
-            <Link href="/equipos" className="btn btn-primary btn-sm">
-              próximamente
+            <Link href="/equipos" prefetch={false} className="btn btn-primary btn-sm">
+              equipos
             </Link>
           )}
         </div>
@@ -43,7 +44,7 @@ export function FlowNav() {
   return (
     <nav className="topnav" aria-label="principal">
       <div className="wrap topnav-inner">
-        <Link href="/" aria-label="picathon, inicio">
+        <Link href="/" prefetch={false} aria-label="Picante · inicio de Picathon">
           <Logo />
         </Link>
         <Link href="/" className="link-quiet">

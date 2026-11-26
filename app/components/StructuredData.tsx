@@ -18,9 +18,7 @@ import {
   SOCIAL_PROFILES,
   TEAM_SIZE,
   VENUE,
-  VENUE_ADDRESS,
   VENUE_COUNTRY,
-  VENUE_GEO,
   VENUE_LOCALITY,
   VENUE_POSTAL_CODE,
   VENUE_REGION,
@@ -37,7 +35,7 @@ const offer = APPLY_OPEN
       "@type": "Offer",
       url: APPLY_URL,
       price: "0",
-      priceCurrency: "UYU",
+      priceCurrency: "ARS",
       availability: "https://schema.org/LimitedAvailability",
       validThrough: APPLY_DEADLINE_ISO,
     }
@@ -45,7 +43,7 @@ const offer = APPLY_OPEN
       "@type": "Offer",
       url: CANONICAL_URL,
       price: "0",
-      priceCurrency: "UYU",
+      priceCurrency: "ARS",
       availability: "https://schema.org/SoldOut",
     };
 
@@ -133,16 +131,10 @@ const structuredData = {
         name: VENUE,
         address: {
           "@type": "PostalAddress",
-          streetAddress: VENUE_ADDRESS,
           addressLocality: VENUE_LOCALITY,
           addressRegion: VENUE_REGION,
           ...(VENUE_POSTAL_CODE ? { postalCode: VENUE_POSTAL_CODE } : {}),
           addressCountry: VENUE_COUNTRY,
-        },
-        geo: {
-          "@type": "GeoCoordinates",
-          latitude: VENUE_GEO.lat,
-          longitude: VENUE_GEO.lng,
         },
       },
       organizer: [

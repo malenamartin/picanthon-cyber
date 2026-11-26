@@ -14,6 +14,10 @@ import { KonamiMatrix } from "./components/KonamiMatrix";
 import { DeployFX } from "./components/DeployFX";
 import { FakeCrash } from "./components/FakeCrash";
 import { StructuredData } from "./components/StructuredData";
+import { pageMetadata } from "./page-metadata";
+import { SEO_DESCRIPTION, SEO_TITLE } from "./event";
+
+export const metadata = pageMetadata("/", SEO_TITLE, SEO_DESCRIPTION);
 
 export default function Home() {
   return (
@@ -27,7 +31,7 @@ export default function Home() {
       <WrappedBanner />
       <SiteNav />
 
-      <main>
+      <main id="contenido" tabIndex={-1}>
         <Hero />
         <EventSection />
         <PressSection />

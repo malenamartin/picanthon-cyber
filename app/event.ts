@@ -12,14 +12,14 @@ export const SITE_URL = "https://picanthon-cyber.vercel.app";
 export const CANONICAL_URL = `${SITE_URL}/`;
 /** Imagen del preview del link: app/opengraph-image.jpg, solo el wordmark de Picante. */
 export const OG_IMAGE_URL = `${SITE_URL}/opengraph-image.jpg`;
-// el logo de marca es el wordmark de Picante en /icon.
-export const LOGO_URL = `${SITE_URL}/icon`;
+// el logo de marca es el wordmark de Picante en /icon.png.
+export const LOGO_URL = `${SITE_URL}/icon.png`;
 
 /** Metadata principal para buscadores (~155 caracteres, sin cortes en SERP). */
 export const SEO_TITLE =
   "Picathon Cyberseguridad 2026 | Buenos Aires";
 export const SEO_DESCRIPTION =
-  "Picathon Cyberseguridad 2026 es la hackathon de ciberseguridad. El sábado 12 de diciembre, de 9 a 21 hs, en las oficinas de Safe U en Buenos Aires.";
+  "Hackathon presencial de ciberseguridad en Buenos Aires. Consultá el programa del sábado 12 de diciembre de 2026, de 9 a 21 hs, en las oficinas de Safe U.";
 
 /** Descripción larga para datos estructurados (Event) y answer engines. */
 export const EVENT_DESCRIPTION =
@@ -31,7 +31,7 @@ export const MENTORS_DESCRIPTION =
 
 /** Última actualización de contenido del sitio (bumpeala con cada anuncio real:
  *  consigna, mentores, jurado, sponsors, cronograma, prensa). Alimenta sitemap y schema. */
-export const CONTENT_UPDATED_ISO = "2026-11-02T00:00:00-03:00";
+export const CONTENT_UPDATED_ISO = "2026-11-24T00:00:00-03:00";
 
 /** ¿Están abiertas las inscripciones?
  *  En `false` la landing no linkea al formulario: los CTAs, la terminal, el FAQ,
@@ -65,7 +65,6 @@ export const VENUE_LOCALITY = "Buenos Aires";
 export const VENUE_REGION = "Buenos Aires";
 export const VENUE_COUNTRY = "AR";
 export const VENUE_POSTAL_CODE = "";
-export const VENUE_GEO = { lat: -34.6037, lng: -58.3816 };
 export const VENUE_MAPS =
   "https://www.google.com/maps/search/?api=1&query=Oficinas+Safe+U+Buenos+Aires";
 

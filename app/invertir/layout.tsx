@@ -1,11 +1,13 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "../page-metadata";
 import { InvestmentShell } from "./ui";
 import "./investing.css";
 
-export const metadata: Metadata = {
-  title: "la ronda · picathon",
-  description: "Un millón de dólares de juego. Invertí en los equipos que creas que tienen más futuro en picathon.",
-  alternates: { canonical: "/invertir" },
+export const metadata = {
+  ...pageMetadata(
+    "/invertir",
+    "La ronda | Picathon",
+    "Invertí capital ficticio en los equipos de Picathon y seguí tu cartera en el juego La ronda.",
+  ),
   robots: { index: false, follow: false },
 };
 

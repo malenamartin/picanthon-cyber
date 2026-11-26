@@ -133,6 +133,19 @@ ol {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
+.skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 1000;
+  padding: 10px 16px;
+  background: var(--fg);
+  color: var(--bg);
+  transform: translateY(calc(-100% - 16px));
+}
+.skip-link:focus {
+  transform: none;
+}
 .sr-only {
   position: absolute;
   width: 1px;
@@ -2875,8 +2888,30 @@ ol {
   .h2.h2-sm {
     font-size: 30px;
   }
+  .topnav-inner:has(.nav-links) {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    row-gap: 0;
+    padding-top: 8px;
+  }
   .nav-links {
-    display: none;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    min-width: 0;
+    justify-content: space-between;
+    gap: 10px;
+    overflow-x: auto;
+    font-size: 12px;
+    scrollbar-width: thin;
+  }
+  .nav-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding-inline: 2px;
+  }
+  html {
+    scroll-padding-top: 108px;
   }
   .closer-card {
     padding: 8px 0 0;

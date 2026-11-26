@@ -14,7 +14,7 @@ export function ShareLinks() {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      // sin permiso de portapapeles: no hacemos nada
+      window.prompt("Copiá el enlace de Picathon", CANONICAL_URL);
     }
   };
 
